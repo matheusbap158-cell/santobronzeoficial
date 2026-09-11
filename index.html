@@ -195,6 +195,34 @@ section.bloco.alt{background:var(--areia)}
 @media (max-width:860px){.sec-head{grid-template-columns:1fr;gap:20px}}
 @media (max-width:760px){section.bloco{padding:64px 0}}
 
+/* ---------- Seções com foto de fundo ----------
+   A foto fica atrás de um véu de cor da paleta. As opacidades foram escolhidas para o texto
+   manter contraste AA mesmo sobre as áreas mais claras ou mais escuras de cada foto. */
+.com-fundo{position:relative;isolation:isolate;overflow:hidden}
+.fundo-foto{position:absolute;inset:0;z-index:-1;margin:0}
+.fundo-foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.fundo-foto::before,.fundo-foto::after{content:"";position:absolute;inset:0}
+.fundo-foto::after{z-index:1}
+.fundo-foto::before{z-index:2;background-image:var(--grain-claro);opacity:.06}
+
+/* Escuro — "Como funciona": carvão, que o design system reserva para conteúdo educativo */
+section.bloco.fundo-escuro{background:var(--carvao);border-bottom-color:transparent}
+.fundo-escuro .fundo-foto::after{background:linear-gradient(180deg,rgba(47,43,40,.9) 0%,rgba(47,43,40,.86) 26%,rgba(47,43,40,.72) 62%,rgba(47,43,40,.9) 100%)}
+.fundo-escuro .sec-head .sig{color:var(--mel)}
+.fundo-escuro .sec-head .h1{color:#F6E6CC}
+.fundo-escuro .sec-head .lead.muted{color:#EADCC7}
+.fundo-escuro .linha-tempo{background:rgba(42,22,11,.74);border-color:rgba(232,207,166,.3);backdrop-filter:blur(6px)}
+
+/* Claro — formulário sobre foto dourada desfocada (previsto no design system) */
+.fundo-claro .fundo-foto::before{display:none}
+.fundo-claro .fundo-foto::after{background:rgba(251,243,228,.86)}
+
+/* Fechamento — sol e palmeiras sob véu cacau, mais fechado do lado do texto */
+.tom.com-fundo .fundo-foto img{object-position:50% 40%}
+.tom.com-fundo .fundo-foto::before{display:none}
+.tom.com-fundo .fundo-foto::after{background:linear-gradient(90deg,rgba(90,45,20,.93) 0%,rgba(90,45,20,.85) 55%,rgba(90,45,20,.6) 100%)}
+@media (max-width:760px){.tom.com-fundo .fundo-foto::after{background:rgba(90,45,20,.88)}}
+
 /* ---------- Manifesto ---------- */
 .manifesto-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
 @media (max-width:860px){.manifesto-grid{grid-template-columns:1fr;gap:40px}}
@@ -674,7 +702,8 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 </section>
 
 <!-- ============ 4. COMO FUNCIONA ============ -->
-<section class="bloco alt" id="como-funciona" aria-labelledby="t-como">
+<section class="bloco alt com-fundo fundo-escuro" id="como-funciona" aria-labelledby="t-como">
+  <figure class="fundo-foto" aria-hidden="true"><img src="assets/fundo-como-funciona-esfoliacao.jpg" width="1600" height="893" alt="" style="object-position:72% 50%" loading="lazy" decoding="async"></figure>
   <div class="wrap">
     <div class="sec-head rev">
       <div>
@@ -973,7 +1002,8 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 </section>
 
 <!-- ============ 8. FORMULÁRIO / CONTATO ============ -->
-<section class="bloco alt" id="contato" aria-labelledby="t-contato">
+<section class="bloco alt com-fundo fundo-claro" id="contato" aria-labelledby="t-contato">
+  <figure class="fundo-foto" aria-hidden="true"><img src="assets/fundo-contato-pernas-agua.jpg" width="1600" height="893" alt="" style="object-position:62% 70%" loading="lazy" decoding="async"></figure>
   <div class="wrap">
     <div class="sec-head rev">
       <div>
@@ -1083,7 +1113,8 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 </section>
 
 <!-- ============ FECHAMENTO ============ -->
-<section class="tom" aria-labelledby="t-tom">
+<section class="tom com-fundo" aria-labelledby="t-tom">
+  <figure class="fundo-foto" aria-hidden="true"><img src="assets/fundo-fechamento-tons-de-pele.jpg" width="1600" height="893" alt="" loading="lazy" decoding="async"></figure>
   <svg class="folha palma" viewBox="-20 -160 460 320" aria-hidden="true" focusable="false"></svg>
   <div class="wrap">
     <span class="sig">Santo Bronze</span>

@@ -12,6 +12,7 @@ Landing page do **Santo Bronze**, salão de bronzeamento natural e a jato de **D
 | `Info maps.txt` | Dados públicos do perfil no Google Maps: endereço, telefone, nota e avaliações. |
 | `Bio insta.txt` | Bio do perfil no Instagram. |
 | `Logo/` | Arquivo original da logo nova (PNG com fundo transparente, 1254×1254). |
+| `Fotos de fundo/` | Arquivos originais das 3 fotos de fundo das seções (versões otimizadas em `assets/`). |
 
 ## Como visualizar
 
@@ -51,6 +52,9 @@ São **4 CTAs ao longo da rolagem + o botão flutuante**, como manda o design sy
 | `aplicacao-biquini-de-fita.jpg` | Galeria | instagram.com/p/DYAW494HL7S |
 | `premio-sales-pesquisa-2026.jpg` | Bloco do prêmio | instagram.com/p/DcZC99poHK- |
 | `diana-alice-trofeu.jpg` | Quem aplica | instagram.com/p/DcZC99poHK- |
+| `fundo-como-funciona-esfoliacao.jpg` | Fundo da seção "Como funciona" | `Fotos de fundo/` — esfoliação (…085236.jpeg), reduzida de 2,5 MB para 113 KB |
+| `fundo-contato-pernas-agua.jpg` | Fundo da seção do formulário | `Fotos de fundo/` — pernas na água (…085149.jpeg), de 2,2 MB para 90 KB |
+| `fundo-fechamento-tons-de-pele.jpg` | Fundo do fechamento | `Fotos de fundo/` — dois tons de pele (…085125.jpeg), de 3,3 MB para 215 KB |
 
 Critério de escolha, seguindo o design system: luz dourada, pele real com textura, diversidade de tons, sem banco de imagem e sem fundo branco de estúdio. Ficaram de fora os posts só de texto, os memes e as fotos com tapa-mamilo, que não combinam com uma página de conversão.
 
@@ -62,6 +66,7 @@ Critério de escolha, seguindo o design system: luz dourada, pele real com textu
 - **Acessibilidade**: HTML semântico, link "pular para o conteúdo", um único `<h1>`, `alt` descritivo em todas as 12 imagens (o vídeo é decorativo e fica oculto para leitores de tela), `aria-label` nos ícones e gráficos, `aria-pressed` na escala de tons, `aria-live` no formulário, foco visível com anel Mel e **todos os alvos de toque com no mínimo 44px** (verificado).
 - **Contraste**: todos os pares de texto usam as combinações aprovadas do design system ou melhores.
 - **Logo**: a arte original tem brilho claro em volta das letras e o slogan em vermelho escuro, que viram névoa e somem sobre fundo escuro. No cabeçalho (creme) ela vai direto; no selo sobre a foto, vai sobre fundo creme; no rodapé (espresso) usa a versão `logo-santo-bronze-escuro.png`, sem o brilho e com o slogan em champanhe.
+- **Fotos de fundo**: três seções têm foto atrás de um véu de cor da paleta — "Como funciona" em carvão (o fundo que o design system reserva para conteúdo educativo), o formulário em creme (o design system prevê "formulário sobre foto") e o fechamento em cacau. As opacidades mantêm o texto em contraste AA mesmo sobre as partes mais claras ou escuras de cada foto. São decorativas: `alt=""` e `aria-hidden`, para o leitor de tela não anunciar.
 - **Performance**: sem frameworks nem bibliotecas. Todas as fotos em JPEG otimizado, com `width`/`height` declarados (sem salto de layout) e `loading="lazy"`.
 - **Vídeo do hero**: `autoplay muted loop playsinline` — sem som e em linha, que é o que o iPhone e o Chrome exigem para tocar sozinho. A capa (`poster`) aparece enquanto o vídeo carrega. Um botão de pausar/reproduzir fica no canto superior direito, porque conteúdo em movimento que se repete precisa poder ser parado (WCAG 2.2.2). O vídeo pausa sozinho quando sai da tela, para poupar bateria, e **não é carregado** com movimento reduzido ativado ou no modo economia de dados — nesses casos fica só a capa. Um degradê espresso por cima garante o contraste do texto.
 - **Progressive enhancement**: sem JavaScript, todo o conteúdo continua visível — a escala de tons e o gráfico de palavras estão escritos no HTML; o JS só liga a interação e a animação.
@@ -92,5 +97,6 @@ As 3 tags `<link>` marcadas no `<head>` (Google Fonts) são **o único recurso e
 - [ ] **Escala de tons**: os 5 tons do gráfico interativo são uma construção didática. Ajustar para os tons que o Santo Bronze realmente trabalha no jato.
 - [ ] **Preços**: omitidos de propósito (não havia esse dado). Os cards dizem "Valores pelo WhatsApp".
 - [ ] **Peso do vídeo (opcional)**: o arquivo tem 3,3 MB para 8 segundos e ainda carrega uma faixa de áudio que nunca toca. Recomprimido sem áudio (por exemplo, com `ffmpeg -i hero-video-pele-sol.mp4 -an -vcodec libx264 -crf 28 -preset slow -movflags +faststart saida.mp4`), deve cair para cerca de 1 MB sem perda visível — bom para quem abre pelo 4G.
+- [ ] **Rótulo na foto de esfoliação**: o pote na foto de fundo de "Como funciona" traz o nome de uma marca ("CEMBRI"). Sob o véu escuro ele não fica legível no site, mas vale confirmar se não é uma marca real antes de publicar.
 - [ ] **Horário de funcionamento**: omitido — o perfil do Google não tem esse dado. Vale preencher também no Google Meu Negócio.
 - [ ] **Experience Bronze**: o selo diz "Convidada do Experience Bronze, em Fortaleza". O post fala da 10ª edição, em 2027 — confirmar se ela já participou ou se vai participar, e ajustar o texto se preciso.
