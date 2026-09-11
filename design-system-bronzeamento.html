@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design System — Bronzeamento a Jato</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:wght@300..600&family=Ms+Madi&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cacau:#5A2D14; --caramelo:#B8671F; --mel:#D4A25C;
+  --creme:#FBF3E4; --champanhe:#E8CFA6; --areia:#EAD9C4; --ambar:#9A4A18;
+  --espresso:#2A160B; --carvao:#2F2B28; --texto-2:#6E4E3A;
+  --borda-input:#9C7A5C; --linha:#E2CCB0; --sucesso:#5F7340; --erro:#A6341F;
+  --campo:#FFFBF4;
+
+  --font-display:"Bodoni Moda","Playfair Display",Georgia,serif;
+  --font-body:"Jost","Poppins",system-ui,sans-serif;
+  --font-script:"Ms Madi","Allison",cursive;
+
+  --radius-0:0; --radius-xs:2px; --radius-full:999px;
+  --shadow-sm:0 1px 2px rgba(42,22,11,.08);
+  --shadow-md:0 12px 32px -12px rgba(90,45,20,.28);
+  --shadow-glow:0 8px 24px rgba(212,162,92,.35);
+
+  --space-1:4px; --space-2:8px; --space-3:16px; --space-4:24px;
+  --space-5:32px; --space-6:48px; --space-7:96px; --space-8:144px;
+
+  --grain-claro:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 .92  0 0 0 0 .82  0 0 0 .6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  --grain:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);font-size:17px;line-height:1.6;color:var(--espresso);background:var(--creme);-webkit-font-smoothing:antialiased}
+img,svg{display:block}
+a{color:var(--ambar)}
+:focus-visible{outline:2px solid var(--mel);outline-offset:3px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ---------- Tipografia base ---------- */
+.display{font-family:var(--font-display);font-weight:400;font-size:clamp(60px,9vw,112px);line-height:.9;letter-spacing:-.02em;font-optical-sizing:auto}
+.h1{font-family:var(--font-display);font-weight:400;font-size:clamp(44px,6vw,64px);line-height:.95;letter-spacing:-.015em}
+.h2{font-family:var(--font-display);font-weight:400;font-size:clamp(34px,4.4vw,44px);line-height:1;letter-spacing:-.01em}
+.h3{font-family:var(--font-display);font-weight:500;font-size:clamp(24px,2.6vw,28px);line-height:1.15}
+.h4{font-family:var(--font-body);font-weight:600;font-size:clamp(18px,1.8vw,20px);line-height:1.3}
+.lead{font-size:clamp(17px,1.6vw,19px);line-height:1.6;max-width:560px}
+.small{font-size:14px;line-height:1.5}
+.sig{font-family:var(--font-body);font-weight:500;font-size:11px;letter-spacing:.3em;text-transform:uppercase}
+.script{font-family:var(--font-script);font-weight:400;line-height:.8}
+em.it{font-style:italic}
+.muted{color:var(--texto-2)}
+
+/* ---------- Navegação ---------- */
+.topbar{position:sticky;top:0;z-index:40;background:rgba(251,243,228,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--linha)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;height:60px}
+.topbar .sig{color:var(--cacau)}
+.topbar nav{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none}
+.topbar nav a{color:var(--espresso);text-decoration:none;font-size:14px;white-space:nowrap;padding:4px 0;border-bottom:1px solid transparent}
+.topbar nav a:hover{border-color:var(--ambar);color:var(--ambar)}
+@media (max-width:760px){.topbar .sig{display:none}.topbar .wrap{justify-content:flex-start}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;background:var(--espresso);color:var(--creme);overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;background-image:var(--grain-claro);opacity:.07;pointer-events:none}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end;padding-top:var(--space-8);padding-bottom:96px;position:relative;z-index:1}
+.hero .sig{color:var(--champanhe);margin-bottom:32px;display:block}
+.hero-title{position:relative;color:var(--champanhe)}
+.hero-title .script{position:absolute;right:4%;bottom:-.35em;font-size:1.25em;color:var(--mel);transform:rotate(-6deg);pointer-events:none}
+.hero .lead{color:#EADCC7;margin-top:56px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:32px}
+.hero-photo{position:relative;aspect-ratio:4/5;min-height:360px}
+.hero-photo .stack{position:absolute;left:28px;bottom:28px;color:#FFF3E2;font-family:var(--font-display);font-size:clamp(56px,7vw,92px);line-height:.86;letter-spacing:-.02em}
+.hero-photo .stack small{display:block;font-family:var(--font-body);font-size:15px;line-height:1.35;letter-spacing:0;margin-top:14px;max-width:190px;font-weight:500}
+@media (max-width:860px){.hero .wrap{grid-template-columns:1fr;padding-top:96px}.hero-photo{aspect-ratio:1/1}}
+
+/* Foto simulada (pele em luz dourada) */
+.foto{position:relative;overflow:hidden;background:
+  radial-gradient(60% 45% at 68% 30%,rgba(255,226,186,.75),rgba(255,226,186,0) 70%),
+  radial-gradient(120% 90% at 70% 20%,#E4AE80 0%,#C98552 32%,#955026 68%,#4A220E 100%)}
+.foto::before{content:"";position:absolute;inset:0;background-image:var(--grain);opacity:.12;mix-blend-mode:multiply}
+.foto.v2{background:radial-gradient(55% 40% at 30% 35%,rgba(255,230,196,.7),transparent 70%),radial-gradient(130% 100% at 30% 25%,#EBC09A,#C27C47 45%,#7A3A17 100%)}
+.foto.v3{background:radial-gradient(50% 40% at 55% 60%,rgba(255,220,170,.55),transparent 70%),linear-gradient(160deg,#D9A276,#A55F2E 55%,#5A2D14)}
+.foto .cap{position:absolute;top:12px;left:12px;font-size:12px;color:rgba(255,248,236,.9);background:rgba(42,22,11,.35);padding:2px 8px;border-radius:2px;z-index:2}
+.degrade::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(154,74,24,0) 35%,rgba(154,74,24,.88) 100%)}
+.foto > *{position:relative;z-index:1}
+
+/* ---------- Seções ---------- */
+section.bloco{padding:var(--space-7) 0;border-bottom:1px solid var(--linha)}
+section.bloco.alt{background:var(--areia)}
+.sec-head{display:grid;grid-template-columns:280px 1fr;gap:48px;margin-bottom:var(--space-6)}
+.sec-head .h1 .script{color:var(--caramelo);font-size:1.3em;margin-left:.1em}
+.sec-head p{max-width:560px}
+.sub{margin:var(--space-6) 0 var(--space-4);display:flex;align-items:baseline;gap:16px;border-top:1px solid var(--linha);padding-top:20px}
+.sub .h3{flex:0 0 auto}
+.sub p{color:var(--texto-2);font-size:15px}
+@media (max-width:860px){.sec-head{grid-template-columns:1fr;gap:16px}.sub{flex-direction:column;gap:6px}}
+@media (max-width:760px){section.bloco{padding:64px 0}}
+
+/* ---------- Cores ---------- */
+.swatches{display:grid;gap:12px}
+.swatches.tres{grid-template-columns:repeat(3,1fr)}
+.swatches.quatro{grid-template-columns:repeat(4,1fr)}
+.swatches.sete{grid-template-columns:repeat(4,1fr)}
+@media (max-width:860px){.swatches.tres,.swatches.quatro,.swatches.sete{grid-template-columns:repeat(2,1fr)}}
+.sw{appearance:none;border:0;text-align:left;cursor:pointer;background:var(--creme);font:inherit;color:inherit;display:flex;flex-direction:column;border:1px solid var(--linha);transition:transform .15s ease}
+.sw:hover{transform:translateY(-2px)}
+.sw .chip{height:140px;position:relative}
+.swatches.quatro .sw .chip,.swatches.sete .sw .chip{height:96px}
+.sw .chip .aa{position:absolute;right:12px;bottom:10px;font-family:var(--font-display);font-size:28px;line-height:1}
+.sw .info{padding:14px 16px 16px}
+.sw .nome{font-weight:600;font-size:16px}
+.sw .hex{font-size:14px;color:var(--texto-2);display:flex;justify-content:space-between;gap:8px}
+.sw .hex span:last-child{opacity:0;transition:opacity .15s}
+.sw:hover .hex span:last-child,.sw:focus-visible .hex span:last-child{opacity:1}
+.sw .papel{font-size:14px;line-height:1.45;margin-top:6px}
+.proporcao{display:flex;height:56px;margin-top:8px;border:1px solid var(--linha)}
+.proporcao div{display:flex;align-items:flex-end;padding:6px 8px;font-size:12px;font-weight:500}
+.regras{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 48px;margin-top:var(--space-5)}
+.regras p{font-size:15px;padding-left:16px;border-left:2px solid var(--mel)}
+@media (max-width:760px){.regras{grid-template-columns:1fr}}
+.contraste{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.contraste div{padding:18px 16px;font-size:15px;line-height:1.35}
+.contraste b{display:block;font-family:var(--font-display);font-weight:400;font-size:26px}
+@media (max-width:860px){.contraste{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- Tipografia ---------- */
+.familias{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.familia{background:var(--creme);border:1px solid var(--linha);padding:24px}
+.familia .amostra{font-size:88px;line-height:1;height:110px;color:var(--cacau)}
+.familia .h4{margin-top:12px}
+.familia p{font-size:14px;color:var(--texto-2);margin-top:4px}
+@media (max-width:860px){.familias{grid-template-columns:1fr}}
+.tester{display:flex;flex-wrap:wrap;gap:12px;align-items:end;margin-bottom:24px}
+.tester label{font-size:14px;font-weight:500;display:block;margin-bottom:6px}
+.tester .campo{min-width:280px;flex:1}
+.seg{display:inline-flex;border:1px solid var(--borda-input);border-radius:2px;overflow:hidden}
+.seg button{appearance:none;border:0;background:transparent;font:inherit;font-size:14px;padding:0 16px;height:52px;cursor:pointer;color:var(--espresso)}
+.seg button[aria-pressed="true"]{background:var(--cacau);color:var(--creme)}
+.escala{border-top:1px solid var(--linha)}
+.escala .linha-esc{display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:baseline;padding:22px 0;border-bottom:1px solid var(--linha)}
+.escala .meta{font-size:13px;color:var(--texto-2);line-height:1.45}
+.escala .meta b{display:block;color:var(--espresso);font-size:15px}
+.escala .spec{overflow-wrap:anywhere}
+@media (max-width:760px){.escala .linha-esc{grid-template-columns:1fr;gap:8px}}
+
+/* ---------- Botões ---------- */
+.btn{--bg:var(--cacau);--fg:var(--creme);display:inline-flex;align-items:center;justify-content:center;gap:12px;height:56px;padding:0 32px;border-radius:var(--radius-xs);border:1px solid var(--bg);background:var(--bg);color:var(--fg);font-family:var(--font-body);font-weight:500;font-size:16px;text-decoration:none;cursor:pointer;transition:background .2s ease,box-shadow .2s ease,transform .1s ease,border-color .2s}
+.btn svg{width:20px;height:20px;flex:0 0 auto;transition:transform .2s ease}
+.btn .ic{color:var(--mel)}
+.btn:hover{background:var(--espresso);border-color:var(--espresso);box-shadow:var(--shadow-glow)}
+.btn:hover svg{transform:translateX(2px)}
+.btn:active{transform:translateY(1px);box-shadow:none}
+.btn[disabled]{opacity:.45;cursor:not-allowed;box-shadow:none}
+.btn[disabled]:hover{background:var(--bg);border-color:var(--bg)}
+.btn.mel{--bg:var(--mel);--fg:var(--espresso)}
+.btn.mel .ic{color:var(--cacau)}
+.btn.mel:hover{background:#E2B574;border-color:#E2B574}
+.btn.sec{--bg:transparent;--fg:var(--cacau);border-color:var(--cacau)}
+.btn.sec:hover{background:var(--cacau);color:var(--creme);box-shadow:none}
+.btn.sec.claro{--fg:var(--champanhe);border-color:var(--champanhe)}
+.btn.sec.claro:hover{background:var(--champanhe);color:var(--espresso)}
+.link-ed{color:var(--ambar);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;font-weight:500}
+.link-ed:hover{text-decoration-thickness:2px}
+.micro{font-size:14px;color:var(--texto-2);margin-top:10px;display:flex;align-items:center;gap:8px}
+.dot{width:8px;height:8px;border-radius:999px;background:#3BB273;box-shadow:0 0 0 3px rgba(59,178,115,.2)}
+
+.palco{border:1px solid var(--linha);transition:background .3s}
+.palco-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 16px;border-bottom:1px solid var(--linha);background:var(--creme);flex-wrap:wrap}
+.palco-bar span{font-size:14px;color:var(--texto-2)}
+.palco-bar .seg button{height:36px}
+.palco-area{padding:48px 32px;display:flex;flex-wrap:wrap;gap:20px 28px;align-items:center;min-height:220px;position:relative}
+.palco-area .grupo{display:flex;flex-direction:column}
+.palco[data-fundo="creme"] .palco-area{background:var(--creme)}
+.palco[data-fundo="cacau"] .palco-area{background:var(--cacau)}
+.palco[data-fundo="cacau"] .micro{color:var(--champanhe)}
+.palco[data-fundo="cacau"] .link-ed{color:var(--champanhe)}
+.palco[data-fundo="foto"] .palco-area{background:radial-gradient(120% 90% at 70% 20%,#E4AE80 0%,#C98552 32%,#955026 68%,#4A220E 100%)}
+.palco[data-fundo="foto"] .palco-area::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(154,74,24,0) 20%,rgba(154,74,24,.75))}
+.palco[data-fundo="foto"] .palco-area > *{position:relative;z-index:1}
+.palco[data-fundo="foto"] .micro,.palco[data-fundo="foto"] .link-ed{color:#FFF3E2}
+.so-claro,.so-escuro{display:contents}
+.palco[data-fundo="creme"] .so-escuro{display:none}
+.palco:not([data-fundo="creme"]) .so-claro{display:none}
+.estados{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.estados div{font-size:14px;line-height:1.45;padding:16px;background:var(--creme);border:1px solid var(--linha)}
+.estados b{display:block;font-size:15px;margin-bottom:4px}
+@media (max-width:860px){.estados{grid-template-columns:repeat(2,1fr)}}
+
+/* ---------- Formulário ---------- */
+.form-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+@media (max-width:860px){.form-grid{grid-template-columns:1fr}}
+.form-card{background:var(--creme);padding:40px;border:1px solid var(--linha);box-shadow:var(--shadow-md);position:relative}
+.form-card .sig{color:var(--texto-2);display:block;margin-bottom:14px}
+.form-card .h2 .script{color:var(--caramelo);font-size:1.35em}
+.campo-f{margin-top:18px}
+.campo-f label,.tester label{font-size:14px;font-weight:500;color:var(--espresso);display:block;margin-bottom:8px}
+.input{width:100%;height:52px;padding:0 16px;background:var(--campo);border:1px solid var(--borda-input);border-radius:var(--radius-xs);font-family:var(--font-body);font-size:16px;color:var(--espresso);transition:border-color .15s,box-shadow .15s}
+select.input{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' fill='none' stroke='%235A2D14' stroke-width='1.5'/></svg>");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+.input::placeholder{color:#A38A75}
+.input:hover{border-color:var(--cacau)}
+.input:focus{outline:none;border-color:var(--caramelo);box-shadow:0 0 0 3px rgba(212,162,92,.35)}
+.campo-f.erro .input{border-color:var(--erro)}
+.campo-f.erro .input:focus{box-shadow:0 0 0 3px rgba(166,52,31,.2)}
+.msg-erro{display:none;color:var(--erro);font-size:14px;margin-top:6px}
+.campo-f.erro .msg-erro{display:block}
+.form-card .btn{width:100%;margin-top:28px}
+.sucesso{display:none;margin-top:20px;padding:16px;border-left:2px solid var(--sucesso);background:rgba(95,115,64,.08);font-size:15px}
+.sucesso.on{display:block}
+.sucesso b{color:var(--sucesso)}
+.sucesso .preview{margin-top:10px;padding:12px 14px;background:#fff;border:1px solid var(--linha);font-size:14px;color:var(--espresso)}
+.sucesso .link-ed{display:inline-block;margin-top:10px}
+.specs{font-size:15px}
+.specs dt{font-weight:600;margin-top:18px}
+.specs dd{color:var(--texto-2)}
+
+/* ---------- Cards ---------- */
+.cards-serv{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media (max-width:860px){.cards-serv{grid-template-columns:1fr}}
+.card-serv{background:var(--creme);border:1px solid var(--linha);transition:box-shadow .25s ease,transform .25s ease;display:flex;flex-direction:column}
+.card-serv:hover{box-shadow:var(--shadow-md)}
+.card-serv .foto{aspect-ratio:4/5}
+.card-serv .corpo{padding:24px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card-serv .preco{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--linha);padding-top:14px;margin-top:auto}
+.card-serv .preco b{font-weight:600;font-size:18px}
+.card-serv .preco span{font-size:14px;color:var(--texto-2)}
+.card-serv p{font-size:15px;color:var(--texto-2)}
+.nota-ilustr{font-size:13px;color:var(--texto-2);margin-top:12px}
+
+.dupla{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:24px}
+@media (max-width:860px){.dupla{grid-template-columns:1fr}}
+.card-dep{background:var(--cacau);color:var(--champanhe);padding:48px 40px;position:relative;overflow:hidden}
+.card-dep .sig{color:var(--mel)}
+.card-dep blockquote{font-family:var(--font-display);font-style:italic;font-size:clamp(24px,2.6vw,30px);line-height:1.2;margin:20px 0 28px;color:#F3E2C6}
+.card-dep .quem{font-size:14px;color:var(--champanhe)}
+.card-dep .quem b{display:block;font-size:16px;color:#FFF3E2;font-weight:500}
+.estrelas{display:flex;gap:3px;color:var(--mel);margin-top:4px}
+.estrelas svg{width:16px;height:16px}
+.card-dep .folha{position:absolute;right:-60px;bottom:-40px;width:320px;opacity:.12;color:var(--mel)}
+
+.etapas{background:var(--creme);border:1px solid var(--linha);padding:40px}
+.etapas ol{list-style:none;counter-reset:et;display:grid;gap:0}
+.etapas li{counter-increment:et;display:grid;grid-template-columns:56px 1fr;gap:12px;padding:16px 0;border-bottom:1px solid var(--linha)}
+.etapas li:last-child{border-bottom:0}
+.etapas li::before{content:counter(et);font-family:var(--font-display);font-size:40px;line-height:1;color:var(--caramelo)}
+.etapas li p{font-size:15px;color:var(--texto-2)}
+
+.selos{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;align-items:center}
+.selo{background:var(--mel);color:var(--espresso);padding:6px 14px;border-radius:var(--radius-xs);font-weight:500;font-size:15px}
+.selo.escuro{background:var(--cacau);color:var(--champanhe)}
+.faixa-demo{font-family:var(--font-display);font-size:28px;line-height:1.3;margin-top:24px}
+.faixa-demo mark{background:var(--mel);color:var(--espresso);padding:2px 12px;font-family:var(--font-body);font-weight:400;font-size:26px;letter-spacing:.01em}
+
+/* ---------- Estética ---------- */
+.tres-col{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.quatro-col{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+@media (max-width:860px){.tres-col,.quatro-col{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.tres-col,.quatro-col{grid-template-columns:1fr}}
+.demo-tile{background:var(--creme);border:1px solid var(--linha);padding:20px}
+.demo-tile .forma{height:120px;margin-bottom:16px;display:flex;align-items:center;justify-content:center}
+.demo-tile > b{display:block;font-size:15px}
+.demo-tile > span{font-size:14px;color:var(--texto-2);display:block;line-height:1.45}
+.demo-tile > code{font-size:13px;color:var(--ambar)}
+.sombra-box{width:70%;height:84px;background:var(--creme);border:1px solid var(--linha)}
+.esp-lista{border-top:1px solid var(--linha)}
+.esp-row{display:grid;grid-template-columns:120px 70px 1fr 220px;gap:16px;align-items:center;padding:12px 0;border-bottom:1px solid var(--linha);font-size:14px}
+.esp-row .barra{height:14px;background:var(--caramelo)}
+.esp-row code{color:var(--ambar)}
+.esp-row span:last-child{color:var(--texto-2)}
+@media (max-width:760px){.esp-row{grid-template-columns:90px 50px 1fr}.esp-row span:last-child{display:none}}
+.textura{height:220px;position:relative;overflow:hidden}
+.textura .rot{position:absolute;left:14px;bottom:12px;font-size:14px;font-weight:500;z-index:2}
+.tx-grao{background:var(--carvao)}
+.tx-grao::after{content:"";position:absolute;inset:0;background-image:var(--grain-claro);opacity:.14}
+.tx-grao .rot{color:var(--champanhe)}
+.tx-palma{background:var(--areia)}
+.tx-palma svg{position:absolute;right:-30px;top:30px;width:115%;color:var(--cacau);opacity:.11}
+.tx-palma .rot{color:var(--espresso)}
+.tx-foto .rot{color:#FFF3E2}
+
+/* ---------- Conversão ---------- */
+.conv-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media (max-width:860px){.conv-grid{grid-template-columns:1fr}}
+.ordem{list-style:none;counter-reset:or}
+.ordem li{counter-increment:or;display:grid;grid-template-columns:44px 1fr;gap:8px;padding:14px 0;border-bottom:1px solid var(--linha);font-size:15px}
+.ordem li::before{content:counter(or);font-family:var(--font-display);font-size:26px;line-height:1.1;color:var(--caramelo)}
+.ordem li b{display:block;font-size:16px}
+.ordem li span{color:var(--texto-2)}
+.ordem li.cta b::after{content:"CTA";margin-left:10px;font-size:11px;font-weight:600;background:var(--cacau);color:var(--creme);padding:2px 6px;border-radius:2px;vertical-align:2px}
+.conv-regras p{padding:16px 0;border-bottom:1px solid var(--linha);font-size:15px}
+.conv-regras p b{display:block;font-size:16px}
+
+/* ---------- Tom visual ---------- */
+.tom{background:var(--cacau);color:var(--champanhe);padding:var(--space-7) 0;position:relative;overflow:hidden}
+.tom::after{content:"";position:absolute;inset:0;background-image:var(--grain-claro);opacity:.06;pointer-events:none}
+.tom .sig{color:var(--mel)}
+.tom .h1{color:#F6E6CC;margin:16px 0 40px}
+.tom .h1 .script{color:var(--mel);font-size:1.3em}
+.tom ol{list-style:none;counter-reset:tm;max-width:820px;position:relative;z-index:1}
+.tom li{counter-increment:tm;display:grid;grid-template-columns:48px 1fr;padding:18px 0;border-top:1px solid rgba(232,207,166,.25);font-size:clamp(18px,1.8vw,21px);line-height:1.5;color:#F3E2C6}
+.tom li::before{content:counter(tm);font-family:var(--font-display);font-size:28px;color:var(--mel);line-height:1.1}
+.tom .folha{position:absolute;right:-120px;top:40px;width:560px;opacity:.1;color:var(--mel)}
+footer{background:var(--espresso);color:var(--champanhe);padding:32px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* ---------- Flutuante e toast ---------- */
+.fab{position:fixed;right:20px;bottom:20px;z-index:50;display:flex;align-items:center;gap:10px;height:60px;min-width:60px;padding:0 18px;border-radius:var(--radius-full);background:var(--cacau);color:var(--creme);border:0;font:500 15px var(--font-body);cursor:pointer;box-shadow:0 10px 30px -8px rgba(42,22,11,.5);transition:background .2s,box-shadow .2s}
+.fab:hover{background:var(--espresso);box-shadow:var(--shadow-glow),0 10px 30px -8px rgba(42,22,11,.5)}
+.fab svg{width:24px;height:24px;color:var(--mel)}
+.fab .dot{position:absolute;top:8px;left:40px;border:2px solid var(--cacau);width:12px;height:12px}
+@media (max-width:760px){.fab .txt{display:none}.fab{padding:0;justify-content:center;width:60px}}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:var(--espresso);color:var(--creme);padding:12px 20px;font-size:15px;border-radius:2px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:60}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:520px){.palco-area{padding:32px 20px}.btn{height:auto;min-height:56px;padding:14px 22px;text-align:center}.form-card{padding:28px 20px}.card-dep{padding:36px 24px}.etapas{padding:28px 20px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M12 3.5a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.4-1.1A8.5 8.5 0 1 0 12 3.5Z"/><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" d="M8.6 10.2h6.8M8.6 13.6h4.4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.8 2.8 6 6.4.6-4.8 4.3 1.4 6.4L12 16.8l-5.8 3.3 1.4-6.4-4.8-4.3 6.4-.6Z"/></symbol>
+</svg>
+
+<header class="topbar">
+  <div class="wrap">
+    <span class="sig">Bronzeamento by [Nome]</span>
+    <nav aria-label="Seções do design system">
+      <a href="#cores">Cores</a>
+      <a href="#tipografia">Tipografia</a>
+      <a href="#componentes">Componentes</a>
+      <a href="#estetica">Estética</a>
+      <a href="#conversao">Conversão</a>
+      <a href="#tom">Tom visual</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="sig">Design system da landing page</span>
+      <h1 class="display hero-title">Design<br><em class="it">System</em><span class="script" aria-hidden="true">bronze</span></h1>
+      <p class="lead">A base visual para uma landing page de bronzeamento a jato que transmite cuidado técnico e leva a cliente direto para uma conversa no WhatsApp.</p>
+      <div class="hero-actions">
+        <a class="btn mel" href="#componentes"><svg class="ic"><use href="#i-chat"/></svg>Ver os componentes</a>
+        <a class="btn sec claro" href="#cores">Começar pelas cores</a>
+      </div>
+    </div>
+    <div class="hero-photo foto degrade" role="img" aria-label="Espaço para foto de pele em luz dourada">
+      <span class="cap">Foto: ombro ou colo em luz dourada</span>
+      <div class="stack">Na<br>tu<br>ral<small>é quando o bronze parece ter nascido com você.</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- CORES -->
+<section class="bloco" id="cores">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h1">Cores</h2>
+      <p class="lead muted">Creme e cacau dão a autoridade editorial; caramelo e mel trazem o calor do bronze. Clique em qualquer cor para copiar o código.</p>
+    </div>
+
+    <div class="sub"><h3 class="h3">Principal</h3><p>As três cores que identificam a marca.</p></div>
+    <div class="swatches tres" data-grupo="principal"></div>
+
+    <div class="sub"><h3 class="h3">Secundária</h3><p>Fundos, respiro e texto sobre foto.</p></div>
+    <div class="swatches quatro" data-grupo="secundaria"></div>
+
+    <div class="sub"><h3 class="h3">Suporte</h3><p>Texto, interface e feedback de formulário.</p></div>
+    <div class="swatches sete" data-grupo="suporte"></div>
+
+    <div class="sub"><h3 class="h3">Proporção</h3><p>Quanto de cada cor aparece numa página.</p></div>
+    <div class="proporcao" aria-label="Proporção de cores">
+      <div style="flex:60;background:var(--creme)">Creme e Areia 60%</div>
+      <div style="flex:25;background:var(--cacau);color:var(--creme)">Cacau e Espresso 25%</div>
+      <div style="flex:10;background:var(--caramelo);color:var(--creme)">10%</div>
+      <div style="flex:5;background:var(--champanhe)">5%</div>
+    </div>
+
+    <div class="sub"><h3 class="h3">Combinações aprovadas</h3><p>Contraste medido (WCAG).</p></div>
+    <div class="contraste">
+      <div style="background:var(--cacau);color:var(--creme)"><b>10,5 : 1</b>Creme sobre Cacau. Botão principal.</div>
+      <div style="background:var(--mel);color:var(--espresso)"><b>7,5 : 1</b>Espresso sobre Mel. Botão em fundo escuro e selos.</div>
+      <div style="background:var(--creme);color:var(--ambar);border:1px solid var(--linha)"><b>5,7 : 1</b>Âmbar sobre Creme. Links e textos em cor.</div>
+      <div style="background:var(--creme);color:var(--caramelo);border:1px solid var(--linha)"><b>3,8 : 1</b>Caramelo sobre Creme. Só texto grande (24px+).</div>
+    </div>
+
+    <div class="regras">
+      <p><b>Cacau é a cor do clique.</b> Nenhum outro bloco grande usa Cacau sólido com texto claro, para o botão do WhatsApp nunca competir.</p>
+      <p><b>O verde do WhatsApp fica fora.</b> O reconhecimento vem do ícone e da palavra "WhatsApp" no botão. O verde só aparece no pontinho de "online".</p>
+      <p><b>Degradê sobre foto.</b> Âmbar profundo de 0% a 88% de baixo para cima garante leitura do texto claro em qualquer foto.</p>
+      <p><b>Nada de branco puro.</b> O fundo é sempre Creme; branco só dentro de campos de formulário.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIPOGRAFIA -->
+<section class="bloco alt" id="tipografia">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h1">Tipo<br>grafia</h2>
+      <p class="lead muted">Uma serifa alta de alto contraste para autoridade, uma sans geométrica para leitura e um toque manuscrito, sempre em uma única palavra.</p>
+    </div>
+
+    <div class="familias">
+      <div class="familia"><div class="amostra" style="font-family:var(--font-display)">Aa</div><p class="h4">Bodoni Moda</p><p>Display e títulos, com itálico. Alternativas: Gloock, Playfair Display, Italiana.</p></div>
+      <div class="familia"><div class="amostra" style="font-family:var(--font-body);font-weight:300">Aa</div><p class="h4">Jost</p><p>Texto e interface, pesos 300 a 600. Alternativas: Poppins, Montserrat, Outfit.</p></div>
+      <div class="familia"><div class="amostra script" style="font-size:110px;line-height:1.1">Aa</div><p class="h4">Ms Madi</p><p>Acento manuscrito, uma palavra por bloco. Alternativas: Allison, Sacramento.</p></div>
+    </div>
+
+    <div class="sub"><h3 class="h3">Hierarquia</h3><p>Digite um texto para testar em todos os níveis.</p></div>
+    <div class="tester">
+      <div class="campo">
+        <label for="tt">Texto de teste</label>
+        <input id="tt" class="input" value="Cada pele carrega um momento">
+      </div>
+      <div>
+        <label id="lbl-disp">Tamanho</label>
+        <div class="seg" role="group" aria-labelledby="lbl-disp">
+          <button type="button" data-disp="d" aria-pressed="true">Desktop</button>
+          <button type="button" data-disp="m" aria-pressed="false">Mobile</button>
+        </div>
+      </div>
+    </div>
+    <div class="escala" id="escala"></div>
+
+    <div class="regras">
+      <p><b>Títulos em sílabas</b> ("Na / tu / ral") são a assinatura mais forte das referências. Use uma vez por página, no hero ou no manifesto.</p>
+      <p><b>Itálico da Bodoni</b> marca a palavra emocional da frase. No máximo uma por título.</p>
+      <p><b>Script só numa palavra</b> do universo da marca: bronze, glow, pele, autoestima. Nunca em botão, preço ou texto corrido.</p>
+      <p><b>Caixa-alta espaçada</b> apenas para a assinatura "Bronzeamento by [Nome]". Texto corrido com no máximo 62 caracteres por linha.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COMPONENTES -->
+<section class="bloco" id="componentes">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h1">Compo<br>nentes</h2>
+      <p class="lead muted">Retos, discretos e com um único protagonista: o botão que abre o WhatsApp.</p>
+    </div>
+
+    <div class="sub"><h3 class="h3">Botões</h3><p>Troque o fundo para ver cada versão no lugar certo.</p></div>
+    <div class="palco" data-fundo="creme" id="palco">
+      <div class="palco-bar">
+        <span>Fundo da seção</span>
+        <div class="seg" role="group" aria-label="Fundo da demonstração">
+          <button type="button" data-fundo="creme" aria-pressed="true">Creme</button>
+          <button type="button" data-fundo="cacau" aria-pressed="false">Cacau</button>
+          <button type="button" data-fundo="foto" aria-pressed="false">Sobre foto</button>
+        </div>
+      </div>
+      <div class="palco-area">
+        <div class="grupo">
+          <span class="so-claro"><a class="btn" href="#formulario"><svg class="ic"><use href="#i-chat"/></svg>Agendar meu bronze pelo WhatsApp</a></span>
+          <span class="so-escuro"><a class="btn mel" href="#formulario"><svg class="ic"><use href="#i-chat"/></svg>Agendar meu bronze pelo WhatsApp</a></span>
+          <span class="micro"><span class="dot"></span>Resposta rápida, sem compromisso</span>
+        </div>
+        <span class="so-claro"><a class="btn sec" href="#cards">Ver serviços</a></span>
+        <span class="so-escuro"><a class="btn sec claro" href="#cards">Ver serviços</a></span>
+        <a class="link-ed" href="#etapas">Como funciona a aplicação</a>
+        <button class="btn" disabled>Indisponível</button>
+      </div>
+    </div>
+    <div class="estados">
+      <div><b>Hover</b>Cacau escurece para Espresso e ganha o brilho mel. O ícone anda 2px.</div>
+      <div><b>Foco</b>Anel Mel de 2px com 3px de afastamento. Teste com a tecla Tab.</div>
+      <div><b>Pressionado</b>Desce 1px e perde a sombra, como um toque real.</div>
+      <div><b>Desabilitado</b>45% de opacidade, sem sombra e sem hover.</div>
+    </div>
+
+    <div class="sub" id="formulario"><h3 class="h3">Formulário</h3><p>Três campos que abrem o WhatsApp com a mensagem pronta.</p></div>
+    <div class="form-grid">
+      <dl class="specs">
+        <dt>Por que curto</dt>
+        <dd>A cliente não está "se cadastrando", está começando uma conversa. Cada campo a mais reduz o envio.</dd>
+        <dt>Campo</dt>
+        <dd>Fundo #FFFBF4, borda 1px #9C7A5C, raio 2px, altura 52px, texto 16px para o iPhone não dar zoom.</dd>
+        <dt>Rótulo</dt>
+        <dd>Sempre visível acima do campo. O placeholder só dá exemplo, nunca substitui o rótulo.</dd>
+        <dt>Foco e erro</dt>
+        <dd>Foco com borda Caramelo e anel mel. Erro em #A6341F dizendo exatamente o que corrigir.</dd>
+        <dt>Teste agora</dt>
+        <dd>Envie o formulário vazio para ver os erros, depois preencha para ver a mensagem gerada.</dd>
+      </dl>
+
+      <form class="form-card" id="leadForm" novalidate>
+        <span class="sig">Bronzeamento by [Nome]</span>
+        <h3 class="h2">Vamos escolher seu <span class="script">tom</span></h3>
+        <div class="campo-f" id="f-nome">
+          <label for="nome">Seu nome</label>
+          <input class="input" id="nome" name="nome" autocomplete="given-name" placeholder="Ex.: Ana">
+          <p class="msg-erro">Digite seu nome para a gente te chamar direitinho.</p>
+        </div>
+        <div class="campo-f" id="f-whats">
+          <label for="whats">Seu WhatsApp</label>
+          <input class="input" id="whats" name="whats" inputmode="tel" autocomplete="tel" placeholder="(35) 99999-9999">
+          <p class="msg-erro">Digite seu WhatsApp com DDD.</p>
+        </div>
+        <div class="campo-f" id="f-ocasiao">
+          <label for="ocasiao">Para qual ocasião?</label>
+          <select class="input" id="ocasiao" name="ocasiao">
+            <option value="">Escolha uma opção</option>
+            <option>um casamento</option>
+            <option>um evento</option>
+            <option>viagem ou verão</option>
+            <option>manter meu bronze</option>
+            <option>minha primeira vez</option>
+          </select>
+          <p class="msg-erro">Escolha a ocasião para indicarmos o tom certo.</p>
+        </div>
+        <button class="btn" type="submit"><svg class="ic"><use href="#i-chat"/></svg>Continuar no WhatsApp</button>
+        <p class="micro" style="justify-content:center">Resposta rápida, sem compromisso</p>
+        <div class="sucesso" id="sucesso" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+
+    <div class="sub" id="cards"><h3 class="h3">Cards</h3><p>Sem sombra em repouso: a separação vem da cor e das linhas finas.</p></div>
+    <div class="cards-serv">
+      <article class="card-serv">
+        <div class="foto v2" role="img" aria-label="Espaço para foto de rosto com pele iluminada"><span class="cap">Foto 4:5, raio 0</span></div>
+        <div class="corpo">
+          <h4 class="h3">Glow natural</h4>
+          <p>Um dourado leve, para quem quer parecer que voltou de férias sem ninguém perceber o porquê.</p>
+          <div class="preco"><b>R$ 120</b><span>40 min</span></div>
+          <a class="link-ed" href="#formulario">Quero esse tom</a>
+        </div>
+      </article>
+      <article class="card-serv">
+        <div class="foto" role="img" aria-label="Espaço para foto de ombro em luz dourada"><span class="cap">Foto 4:5, raio 0</span></div>
+        <div class="corpo">
+          <h4 class="h3">Mel dourado</h4>
+          <p>Tom intermediário e caloroso, o mais pedido para eventos e ensaios fotográficos.</p>
+          <div class="preco"><b>R$ 150</b><span>50 min</span></div>
+          <a class="link-ed" href="#formulario">Quero esse tom</a>
+        </div>
+      </article>
+      <article class="card-serv">
+        <div class="foto v3" role="img" aria-label="Espaço para foto de corpo com bronze intenso"><span class="cap">Foto 4:5, raio 0</span></div>
+        <div class="corpo">
+          <h4 class="h3">Bronze profundo</h4>
+          <p>Cor mais intensa construída em camadas, indicada para peles que já têm base dourada.</p>
+          <div class="preco"><b>R$ 180</b><span>60 min</span></div>
+          <a class="link-ed" href="#formulario">Quero esse tom</a>
+        </div>
+      </article>
+    </div>
+    <p class="nota-ilustr">Nomes, valores e durações são ilustrativos. Substitua pelos serviços reais.</p>
+
+    <div class="dupla">
+      <article class="card-dep">
+        <span class="sig">Depoimento</span>
+        <blockquote>"Pela primeira vez o bronze combinou com a minha pele. Ninguém acreditou que era jato."</blockquote>
+        <p class="quem"><b>Cliente real, com foto</b>Bronze para casamento</p>
+        <div class="estrelas" aria-label="5 estrelas"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <svg class="folha palma" viewBox="-20 -160 460 320" aria-hidden="true"></svg>
+      </article>
+      <div class="etapas" id="etapas">
+        <h4 class="h3" style="margin-bottom:8px">Como funciona</h4>
+        <ol>
+          <li><div><b>Avaliação da pele</b><p>Tom, subtom e histórico, como melasma ou sensibilidade.</p></div></li>
+          <li><div><b>Preparo</b><p>Orientações de esfoliação e hidratação antes do dia.</p></div></li>
+          <li><div><b>Aplicação</b><p>Protocolo individual, com a cor construída em camadas.</p></div></li>
+          <li><div><b>Pós-bronze</b><p>Primeiro banho, cuidados e como fazer o bronze durar.</p></div></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="selos">
+      <span class="selo">Protocolo individual</span>
+      <span class="selo">Nota 5,0 no Google</span>
+      <span class="selo escuro">Produto vegano</span>
+      <span class="small muted">Selos em Mel, raio 2px. Só use afirmações verdadeiras.</span>
+    </div>
+    <p class="faixa-demo"><mark>Bronze e melasma:</mark><br><em class="it">dá para ter um brilho seguro?</em></p>
+  </div>
+</section>
+
+<!-- ESTÉTICA -->
+<section class="bloco alt" id="estetica">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h1">Estética</h2>
+      <p class="lead muted">Formas retas como uma revista, sombras quentes e muito respiro. A sofisticação vem do que fica vazio.</p>
+    </div>
+
+    <div class="sub"><h3 class="h3">Arredondamento</h3><p>Quase imperceptível, só onde se clica.</p></div>
+    <div class="tres-col">
+      <div class="demo-tile"><div class="forma"><div class="foto" style="width:100%;height:100%"></div></div><b>0</b><span>Fotos, cards, seções e blocos de cor.</span><code>--radius-0</code></div>
+      <div class="demo-tile"><div class="forma"><span class="btn" style="pointer-events:none">Botão</span></div><b>2px</b><span>Botões, campos e selos.</span><code>--radius-xs</code></div>
+      <div class="demo-tile"><div class="forma"><span class="fab" style="position:static;pointer-events:none;width:60px;padding:0;justify-content:center"><svg><use href="#i-chat"/></svg></span></div><b>Circular</b><span>Só o botão flutuante do WhatsApp, por ser um padrão que todos reconhecem.</span><code>--radius-full</code></div>
+    </div>
+
+    <div class="sub"><h3 class="h3">Sombras</h3><p>Sempre tingidas de marrom, nunca cinza.</p></div>
+    <div class="quatro-col">
+      <div class="demo-tile"><div class="forma"><div class="sombra-box"></div></div><b>Nenhuma</b><span>Padrão de cards e seções.</span><code>--shadow-none</code></div>
+      <div class="demo-tile"><div class="forma"><div class="sombra-box" style="box-shadow:var(--shadow-sm)"></div></div><b>Sutil</b><span>Campos em repouso, opcional.</span><code>--shadow-sm</code></div>
+      <div class="demo-tile"><div class="forma"><div class="sombra-box" style="box-shadow:var(--shadow-md)"></div></div><b>Média</b><span>Card em hover, formulário sobre foto.</span><code>--shadow-md</code></div>
+      <div class="demo-tile"><div class="forma"><div class="sombra-box" style="box-shadow:var(--shadow-glow);background:var(--cacau);border-color:var(--cacau)"></div></div><b>Brilho mel</b><span>Hover do botão principal.</span><code>--shadow-glow</code></div>
+    </div>
+
+    <div class="sub"><h3 class="h3">Espaçamento</h3><p>Base de 8px. Conteúdo com no máximo 1200px de largura.</p></div>
+    <div class="esp-lista" id="espacos"></div>
+
+    <div class="sub"><h3 class="h3">Texturas</h3><p>No máximo duas por página.</p></div>
+    <div class="tres-col">
+      <div class="textura tx-grao"><span class="rot">Granulado 6 a 8% em fundos escuros</span></div>
+      <div class="textura tx-palma"><svg class="palma" viewBox="-20 -160 460 320" aria-hidden="true"></svg><span class="rot">Sombra de palmeira em Cacau a 11%</span></div>
+      <div class="textura foto degrade tx-foto"><span class="rot">Degradê âmbar sobre foto</span></div>
+    </div>
+    <div class="regras">
+      <p><b>Fotografia</b> com luz dourada lateral, pele real com textura, close de ombro, colo e rosto, gotas de água e sorriso espontâneo.</p>
+      <p><b>Diversidade de tons de pele</b> nas fotos: o público precisa se ver no resultado. Evite banco de imagem genérico e fundo branco de estúdio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONVERSÃO -->
+<section class="bloco" id="conversao">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="h1">Conver<br>são</h2>
+      <p class="lead muted">Autoridade se constrói em sequência: primeiro o cuidado, depois a prova, e só então o pedido.</p>
+    </div>
+    <div class="conv-grid">
+      <div>
+        <h3 class="h3" style="margin-bottom:8px">Ordem das seções</h3>
+        <ol class="ordem">
+          <li class="cta"><div><b>Hero</b><span>Foto de pele em luz dourada, título curto e botão do WhatsApp.</span></div></li>
+          <li><div><b>Manifesto</b><span>O que ela prioriza: entender a pele, não a rapidez.</span></div></li>
+          <li class="cta"><div><b>Serviços</b><span>Três cards com tom, duração e preço.</span></div></li>
+          <li><div><b>Como funciona</b><span>As quatro etapas da aplicação.</span></div></li>
+          <li class="cta"><div><b>Prova social</b><span>Depoimentos, nota do Google e fotos reais.</span></div></li>
+          <li><div><b>Quem aplica</b><span>Foto com o aerógrafo, formação e experiência.</span></div></li>
+          <li><div><b>Dúvidas</b><span>Melasma, gestantes, duração, primeiro banho.</span></div></li>
+          <li class="cta"><div><b>Formulário</b><span>Três campos que abrem o WhatsApp.</span></div></li>
+        </ol>
+      </div>
+      <div class="conv-regras">
+        <h3 class="h3" style="margin-bottom:8px">Regras</h3>
+        <p><b>Um único destino</b>Todo botão leva ao WhatsApp. Instagram só no rodapé.</p>
+        <p><b>Botão a cada rolagem</b>Quatro CTAs na página, mais o flutuante sempre visível.</p>
+        <p><b>Mensagem pronta</b>Link wa.me com nome, serviço ou ocasião já preenchidos, para ela não travar no "o que eu escrevo?".</p>
+        <p><b>Microtexto de segurança</b>"Resposta rápida, sem compromisso" logo abaixo do botão.</p>
+        <p><b>Especialista visível</b>A assinatura "Bronzeamento by [Nome]" no topo das seções mostra que há uma profissional por trás, não uma franquia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOM VISUAL -->
+<section class="tom" id="tom">
+  <svg class="folha palma" viewBox="-20 -160 460 320" aria-hidden="true"></svg>
+  <div class="wrap">
+    <span class="sig">Conferência rápida</span>
+    <h2 class="h1">Tom <span class="script">visual</span></h2>
+    <ol>
+      <li>Editorial e caloroso: creme e cacau com toques de mel, com cara de revista de beleza e não de panfleto de promoção.</li>
+      <li>Serifa alta e elegante com uma única palavra manuscrita, unindo sofisticação e a leveza do verão brasileiro.</li>
+      <li>Pele real em luz dourada, formas retas e muito respiro, com um só botão cacau guiando tudo para o WhatsApp.</li>
+    </ol>
+  </div>
+</section>
+
+<footer><div class="wrap"><span class="sig">Bronzeamento by [Nome]</span><span>Design system v1, setembro de 2026</span></div></footer>
+
+<button class="fab" type="button" id="fab" aria-label="Falar pelo WhatsApp"><svg><use href="#i-chat"/></svg><span class="dot"></span><span class="txt">Fale comigo</span></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ---------- Cores ---------- */
+const cores = {
+  principal:[
+    ["Cacau","#5A2D14","Autoridade. Botão principal, blocos de destaque e títulos em fundo claro.","#FBF3E4"],
+    ["Caramelo","#B8671F","O bronze da marca. Degradês, palavra em script e detalhes grandes.","#FBF3E4"],
+    ["Mel","#D4A25C","Faixas atrás do texto, selos e botão em fundo escuro.","#2A160B"]
+  ],
+  secundaria:[
+    ["Creme","#FBF3E4","Fundo base da página.","#5A2D14"],
+    ["Champanhe","#E8CFA6","Texto sobre foto e sobre Cacau.","#5A2D14"],
+    ["Areia","#EAD9C4","Seções alternadas e fundo de cards.","#5A2D14"],
+    ["Âmbar profundo","#9A4A18","Fim do degradê, links e hover.","#FBF3E4"]
+  ],
+  suporte:[
+    ["Espresso","#2A160B","Texto principal e seções escuras.","#E8CFA6"],
+    ["Carvão","#2F2B28","Fundo com granulado para conteúdo educativo.","#E8CFA6"],
+    ["Texto secundário","#6E4E3A","Legendas e descrições.","#FBF3E4"],
+    ["Borda de campo","#9C7A5C","Contorno de inputs.","#FBF3E4"],
+    ["Linha","#E2CCB0","Divisórias decorativas.","#5A2D14"],
+    ["Sucesso","#5F7340","Confirmação de envio.","#FBF3E4"],
+    ["Erro","#A6341F","Mensagens de erro.","#FBF3E4"]
+  ]
+};
+const toast = document.getElementById('toast');
+let tTimer;
+function avisar(msg){toast.textContent=msg;toast.classList.add('on');clearTimeout(tTimer);tTimer=setTimeout(()=>toast.classList.remove('on'),1800)}
+document.querySelectorAll('.swatches').forEach(box=>{
+  cores[box.dataset.grupo].forEach(([nome,hex,papel,fg])=>{
+    const b=document.createElement('button');
+    b.className='sw';b.type='button';b.setAttribute('aria-label',`Copiar ${nome} ${hex}`);
+    b.innerHTML=`<div class="chip" style="background:${hex}"><span class="aa" style="color:${fg}">Aa</span></div>
+      <div class="info"><div class="nome">${nome}</div><div class="hex"><span>${hex}</span><span>Copiar</span></div><div class="papel">${papel}</div></div>`;
+    b.addEventListener('click',()=>{
+      const ok=()=>avisar(`${nome} ${hex} copiado`);
+      if(navigator.clipboard){navigator.clipboard.writeText(hex).then(ok).catch(()=>avisar(hex))}else{avisar(hex)}
+    });
+    box.appendChild(b);
+  });
+});
+
+/* ---------- Escala tipográfica ---------- */
+const niveis=[
+  ["Display","Bodoni Moda 400","display",112,60,.9,"-0.02em","var(--font-display)",400,"normal"],
+  ["H1","Bodoni Moda 400","h1",64,44,.95,"-0.015em","var(--font-display)",400,"normal"],
+  ["H2","Bodoni Moda 400","h2",44,34,1,"-0.01em","var(--font-display)",400,"normal"],
+  ["H3","Bodoni Moda 500 itálico","h3",28,24,1.15,"0","var(--font-display)",500,"italic"],
+  ["H4","Jost 600","h4",20,18,1.3,"0","var(--font-body)",600,"normal"],
+  ["Script","Ms Madi, 1 palavra","script",72,52,.9,"0","var(--font-script)",400,"normal"],
+  ["Lead","Jost 400","lead",19,17,1.6,"0","var(--font-body)",400,"normal"],
+  ["Corpo","Jost 400","corpo",17,16,1.6,"0","var(--font-body)",400,"normal"],
+  ["Pequeno","Jost 400","pequeno",14,14,1.5,"0","var(--font-body)",400,"normal"],
+  ["Assinatura","Jost 500 caixa-alta","sig",11,11,1.4,"0.3em","var(--font-body)",500,"normal"]
+];
+const escala=document.getElementById('escala');
+const tt=document.getElementById('tt');
+let disp='d';
+function renderEscala(){
+  const txt=tt.value.trim()||'Cada pele carrega um momento';
+  escala.innerHTML=niveis.map(n=>{
+    const sz=disp==='d'?n[3]:n[4];
+    const t=n[0]==='Script'?txt.split(' ').slice(-1)[0]:txt;
+    const up=n[0]==='Assinatura'?'uppercase':'none';
+    const cor=n[0]==='Script'?'var(--caramelo)':'var(--espresso)';
+    return `<div class="linha-esc"><div class="meta"><b>${n[0]}</b>${n[1]}<br>${sz}px, entrelinha ${n[5]}</div>
+      <div class="spec" style="font-family:${n[7]};font-weight:${n[8]};font-style:${n[9]};font-size:${sz}px;line-height:${n[5]};letter-spacing:${n[6]};text-transform:${up};color:${cor}">${t.replace(/</g,'&lt;')}</div></div>`;
+  }).join('');
+}
+tt.addEventListener('input',renderEscala);
+document.querySelectorAll('[data-disp]').forEach(b=>b.addEventListener('click',()=>{
+  disp=b.dataset.disp;
+  document.querySelectorAll('[data-disp]').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  renderEscala();
+}));
+renderEscala();
+
+/* ---------- Palco de botões ---------- */
+const palco=document.getElementById('palco');
+document.querySelectorAll('[data-fundo]').forEach(b=>{
+  if(b.tagName!=='BUTTON')return;
+  b.addEventListener('click',()=>{
+    palco.dataset.fundo=b.dataset.fundo;
+    palco.querySelectorAll('button[data-fundo]').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  });
+});
+
+/* ---------- Espaçamentos ---------- */
+const esp=[["--space-1",4,"Ícone e texto"],["--space-2",8,"Rótulo e campo"],["--space-3",16,"Entre campos e parágrafos"],["--space-4",24,"Padding interno de card"],["--space-5",32,"Título e conteúdo"],["--space-6",48,"Blocos dentro da seção"],["--space-7",96,"Entre seções (64 no mobile)"],["--space-8",144,"Respiro do hero"]];
+document.getElementById('espacos').innerHTML=esp.map(e=>`<div class="esp-row"><code>${e[0]}</code><span>${e[1]}px</span><div><div class="barra" style="width:${Math.min(e[1]/144*100,100)}%"></div></div><span>${e[2]}</span></div>`).join('');
+
+/* ---------- Folha de palmeira (gerada) ---------- */
+function palma(){
+  let s='<g fill="currentColor"><path d="M0 0 Q200 -60 420 -10" stroke="currentColor" stroke-width="4" fill="none"/>';
+  const n=26;
+  for(let i=1;i<n;i++){
+    const t=i/n, x=t*420, y=-60*Math.sin(t*Math.PI)*.9+ (t*-10);
+    const L=150*(1-t*.7);
+    [-1,1].forEach(side=>{
+      const a=(side*(58-22*t)+ (side<0?-8:4))*Math.PI/180;
+      const mx=x+Math.cos(a)*L/2, my=y+Math.sin(a)*L/2;
+      s+=`<ellipse cx="${mx.toFixed(1)}" cy="${my.toFixed(1)}" rx="${(L/2).toFixed(1)}" ry="${(7*(1-t*.5)).toFixed(1)}" transform="rotate(${(a*180/Math.PI).toFixed(1)} ${mx.toFixed(1)} ${my.toFixed(1)})"/>`;
+    });
+  }
+  return s+'</g>';
+}
+document.querySelectorAll('svg.palma').forEach(el=>el.innerHTML=palma());
+
+/* ---------- Formulário → WhatsApp ---------- */
+const NUMERO='5535999999999'; // substitua pelo WhatsApp da cliente (55 + DDD + número)
+const whats=document.getElementById('whats');
+whats.addEventListener('input',()=>{
+  let d=whats.value.replace(/\D/g,'').slice(0,11);
+  let f=d;
+  if(d.length>2)f=`(${d.slice(0,2)}) ${d.slice(2)}`;
+  if(d.length>7)f=`(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`;
+  whats.value=f;
+});
+const form=document.getElementById('leadForm');
+const suc=document.getElementById('sucesso');
+function marca(id,ok){document.getElementById(id).classList.toggle('erro',!ok);return ok}
+form.querySelectorAll('.input').forEach(i=>i.addEventListener('input',()=>i.closest('.campo-f').classList.remove('erro')));
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  const nome=form.nome.value.trim(), tel=whats.value.replace(/\D/g,''), oc=form.ocasiao.value;
+  const v=[marca('f-nome',nome.length>1),marca('f-whats',tel.length>=10),marca('f-ocasiao',!!oc)];
+  if(v.includes(false)){suc.classList.remove('on');form.querySelector('.erro .input').focus();return}
+  const msg=`Olá! Sou a ${nome} e quero agendar um bronze para ${oc}.`;
+  const url=`https://wa.me/${NUMERO}?text=${encodeURIComponent(msg)}`;
+  suc.innerHTML=`<b>Tudo certo.</b> Na página publicada, o WhatsApp abre com esta mensagem:<div class="preview">${msg.replace(/</g,'&lt;')}</div><a class="link-ed" href="${url}" target="_blank" rel="noopener">Testar o link do WhatsApp</a>`;
+  suc.classList.add('on');
+});
+
+/* ---------- Flutuante ---------- */
+document.getElementById('fab').addEventListener('click',()=>{
+  document.getElementById('formulario').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  setTimeout(()=>document.getElementById('nome').focus({preventScroll:true}),500);
+});
+</script>
+</body>
+</html>
