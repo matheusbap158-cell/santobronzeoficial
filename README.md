@@ -6,12 +6,12 @@ Landing page do **Santo Bronze**, salão de bronzeamento natural e a jato de **D
 
 | Arquivo | O que é |
 |---|---|
-| `index.html` | A landing page completa — HTML, CSS e JS em um único arquivo, com a logo embutida em base64. |
-| `assets/` | O vídeo de fundo do hero, a imagem de capa dele e as 9 fotos da página (recortadas em 4:5 e otimizadas), vindas do Instagram @santobronzeoficial. |
+| `index.html` | A landing page completa — HTML, CSS e JS em um único arquivo. |
+| `assets/` | A logo otimizada, os ícones da aba, o vídeo de fundo do hero, a imagem de capa dele e as 9 fotos da página (recortadas em 4:5 e otimizadas), vindas do Instagram @santobronzeoficial. |
 | `design-system-bronzeamento.html` | Design system da marca (tokens, tipografia, componentes, regras de conversão). Base visual da página. |
 | `Info maps.txt` | Dados públicos do perfil no Google Maps: endereço, telefone, nota e avaliações. |
 | `Bio insta.txt` | Bio do perfil no Instagram. |
-| `Logo/` | Arquivo original da logo. |
+| `Logo/` | Arquivo original da logo nova (PNG com fundo transparente, 1254×1254). |
 
 ## Como visualizar
 
@@ -37,6 +37,9 @@ São **4 CTAs ao longo da rolagem + o botão flutuante**, como manda o design sy
 
 | Arquivo | Onde aparece | Post de origem |
 |---|---|---|
+| `logo-santo-bronze.png` | Cabeçalho e selo na foto da Diana | `Logo/` — recortada sem as margens vazias e reduzida de 1,1 MB para 50 KB |
+| `logo-santo-bronze-escuro.png` | Rodapé | Versão para fundo escuro, gerada a partir da logo: sem o brilho claro em volta das letras e com o slogan em champanhe |
+| `favicon-64.png` / `favicon-180.png` | Ícone da aba e da tela inicial do iPhone | Emblema do sol, recortado da logo |
 | `hero-video-pele-sol.mp4` | Fundo do hero | Arquivo enviado na pasta do projeto (antes `Woman_breathing_in_sunlight_20260911074807.mp4`) |
 | `hero-video-poster.jpg` | Capa do vídeo (e imagem de compartilhamento) | Quadro extraído do próprio vídeo |
 | `resultado-colo-marquinha.jpg` | Galeria | instagram.com/p/DX4nF6THMQs |
@@ -58,6 +61,7 @@ Critério de escolha, seguindo o design system: luz dourada, pele real com textu
 - **Mobile-first**, com três faixas: mobile (< 768px), **tablet (768–1023px)** e desktop (≥ 1024px). Sem overflow horizontal de 320px a 1366px (verificado).
 - **Acessibilidade**: HTML semântico, link "pular para o conteúdo", um único `<h1>`, `alt` descritivo em todas as 12 imagens (o vídeo é decorativo e fica oculto para leitores de tela), `aria-label` nos ícones e gráficos, `aria-pressed` na escala de tons, `aria-live` no formulário, foco visível com anel Mel e **todos os alvos de toque com no mínimo 44px** (verificado).
 - **Contraste**: todos os pares de texto usam as combinações aprovadas do design system ou melhores.
+- **Logo**: a arte original tem brilho claro em volta das letras e o slogan em vermelho escuro, que viram névoa e somem sobre fundo escuro. No cabeçalho (creme) ela vai direto; no selo sobre a foto, vai sobre fundo creme; no rodapé (espresso) usa a versão `logo-santo-bronze-escuro.png`, sem o brilho e com o slogan em champanhe.
 - **Performance**: sem frameworks nem bibliotecas. Todas as fotos em JPEG otimizado, com `width`/`height` declarados (sem salto de layout) e `loading="lazy"`.
 - **Vídeo do hero**: `autoplay muted loop playsinline` — sem som e em linha, que é o que o iPhone e o Chrome exigem para tocar sozinho. A capa (`poster`) aparece enquanto o vídeo carrega. Um botão de pausar/reproduzir fica no canto superior direito, porque conteúdo em movimento que se repete precisa poder ser parado (WCAG 2.2.2). O vídeo pausa sozinho quando sai da tela, para poupar bateria, e **não é carregado** com movimento reduzido ativado ou no modo economia de dados — nesses casos fica só a capa. Um degradê espresso por cima garante o contraste do texto.
 - **Progressive enhancement**: sem JavaScript, todo o conteúdo continua visível — a escala de tons e o gráfico de palavras estão escritos no HTML; o JS só liga a interação e a animação.
