@@ -58,6 +58,29 @@ São **4 CTAs ao longo da rolagem + o botão flutuante**, como manda o design sy
 
 Critério de escolha, seguindo o design system: luz dourada, pele real com textura, diversidade de tons, sem banco de imagem e sem fundo branco de estúdio. Ficaram de fora os posts só de texto, os memes e as fotos com tapa-mamilo, que não combinam com uma página de conversão.
 
+## Conversion pass (jornada e conversão)
+
+Ajuste de copy, ordem e fricção feito sobre o site já polido. Não houve mudança de identidade visual e nenhum dado foi inventado: preços, durações e depoimentos continuam exatamente como estavam.
+
+**Nova ordem da página:** Hero → Serviços → **Resultados reais** → Como funciona → **Sua pele** (fototipos) → Avaliações → Quem aplica → Dúvidas → Agendamento → Fechamento → **Cursos**.
+- **Resultados** vieram para logo depois dos serviços, porque "como eu posso ficar?" é o que gera desejo e antes estava enterrado no meio das avaliações.
+- **"Sua pele"** foi para depois de "Como funciona": responde à objeção "combina com o meu tom?", mas é técnico demais para abrir a página.
+- **Cursos** foram para o fim. É outro público (profissionais) e interrompia a cliente logo antes das dúvidas e do agendamento.
+
+**Hero:** o subtítulo virou benefício concreto ("Marquinha desenhada, cor por igual e aquele dourado de quem acabou de voltar das férias…"). O CTA secundário passou de "Ver serviços" para **"Ver resultados reais"**.
+
+**CTAs:** o principal é sempre "Agendar meu bronze pelo WhatsApp". Ele aparece no hero, depois dos serviços, depois dos resultados ("Quero esse resultado"), depois das avaliações, no formulário e no fechamento, além do botão flutuante, que agora diz "Agendar meu bronze". O microtexto "Resposta rápida" (não verificável) virou **"Abre o WhatsApp com a mensagem pronta · sem compromisso"**, que diz o que acontece ao tocar.
+
+**Avaliações:** o depoimento em destaque agora é o da Valeria Rosa, que nunca tinha feito bronzeamento; ele responde à insegurança da primeira vez. Os textos dos depoimentos não foram alterados. A linha de selos repetidos embaixo dos serviços saiu, porque a mesma prova já aparece no hero, nos números e no prêmio.
+
+**Sua pele:** a escala de fototipos ganhou o link "Descobrir qual bronze combina comigo", que abre o WhatsApp.
+
+**Dúvidas:** as perguntas que mais travam o agendamento vêm primeiro (primeira vez, se fica artificial ou laranja, duração). As de saúde vêm depois. O destaque "Bronze e melasma" do título saiu; a pergunta continua no FAQ.
+
+**Formulário:** saiu o campo "Seu WhatsApp", redundante, porque a conversa já acontece no WhatsApp da cliente. Agora são 2 campos. Escolher "curso" ou "mentoria" gera "quero saber sobre…" em vez da mensagem truncada "quero agendar um bronze para o curso".
+
+**Menu:** acompanha a nova ordem (Serviços, Resultados, Como funciona, Sua pele, Avaliações, Dúvidas, Contato, Cursos).
+
 ## Premium polish (direção de arte)
 
 Refinamento feito sobre o site pronto, sem reconstruir nada: mesmo HTML, mesmos textos, links, formulário e funcionalidades. Quase tudo está numa única camada CSS comentada, `PREMIUM POLISH`, no fim do `<style>`. Para desfazer, basta apagar esse bloco.
