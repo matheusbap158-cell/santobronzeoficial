@@ -58,6 +58,16 @@ São **4 CTAs ao longo da rolagem + o botão flutuante**, como manda o design sy
 
 Critério de escolha, seguindo o design system: luz dourada, pele real com textura, diversidade de tons, sem banco de imagem e sem fundo branco de estúdio. Ficaram de fora os posts só de texto, os memes e as fotos com tapa-mamilo, que não combinam com uma página de conversão.
 
+## Final 10% (acabamento)
+
+Nenhum item crítico encontrado. Ajustes pontuais:
+- **Formulário:** o campo "O que você procura?" separa as opções em dois grupos, *Bronzeamento* e *Para profissionais*. Os valores internos não mudaram, então a mensagem que chega no WhatsApp é idêntica à de antes.
+- **Quem aplica:** ficaram só os números da Diana (+5.000 atendidas, 1º lugar por 3 anos). A nota 4,9 e as 79 avaliações já aparecem logo antes, na seção de avaliações.
+- **Serviços:** "Quero um banho de lua" virou "Quero agendar um banho de lua", no mesmo padrão dos outros.
+- **Links:** a seta acompanha a última palavra (no celular caía sozinha na borda). Links no meio de frase, como o do FAQ e o da mensagem de sucesso, não levam seta.
+- **Compartilhamento:** `og:image` com URL absoluta, mais `og:url` e `twitter:card`, para o link mostrar imagem no WhatsApp e no Instagram.
+- **Detalhes:** o ponto verde do microtexto fica alinhado à primeira linha, e "· Lavras MG" não quebra deixando o "·" sozinho.
+
 ## Conversion pass (jornada e conversão)
 
 Ajuste de copy, ordem e fricção feito sobre o site já polido. Não houve mudança de identidade visual e nenhum dado foi inventado: preços, durações e depoimentos continuam exatamente como estavam.

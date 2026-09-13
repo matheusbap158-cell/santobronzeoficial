@@ -11,7 +11,11 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Santo Bronze — Bronzeamento natural e a jato em Lavras MG">
-<meta property="og:image" content="assets/hero-video-poster.jpg">
+<meta property="og:url" content="https://santobronzeoficial.vercel.app/">
+<meta property="og:image" content="https://santobronzeoficial.vercel.app/assets/hero-video-poster.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
+<meta name="twitter:card" content="summary_large_image">
 <meta property="og:description" content="Mais de 5.000 mulheres atendidas e nota 4,9 no Google. Protocolo individual para cada pele.">
 
 <!-- FONTES — as 3 tags abaixo são o único recurso externo da página.
@@ -533,7 +537,7 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   .deps{grid-template-columns:repeat(2,1fr)}
   .deps>.card-dep{grid-column:1/-1}
   .mini-frases{grid-template-columns:repeat(2,1fr)}
-  .numeros{grid-template-columns:repeat(4,1fr)}
+  .numeros{grid-template-columns:repeat(2,1fr)}
   .retrato{aspect-ratio:4/3}
   .retrato>img{object-position:50% 22%}
   .galeria{grid-template-columns:repeat(3,1fr)}
@@ -807,6 +811,16 @@ footer .base{padding-top:28px;font-size:13px}
 #resultados-reais .galeria{margin-top:8px}
 #resultados-reais .cta-dupla{margin-top:clamp(24px,3vw,40px)}
 footer{border-top:1px solid var(--linha-escura)}
+/* ---------- Final 10% ---------- */
+/* a seta acompanha a última palavra (antes, no celular, caía sozinha na borda direita) */
+.link-ed{display:inline-block;line-height:1.45;padding:11px 0;background-position:0 calc(100% - 9px)}
+.link-ed:hover{background-position:100% calc(100% - 9px)}
+.link-ed::after{display:inline-block}
+/* link no meio de frase (FAQ, mensagem de sucesso) não leva seta nem altura de botão */
+.resposta .link-ed,.sucesso .link-ed{padding:0;line-height:inherit;background-position:0 100%}
+.resposta .link-ed::after,.sucesso .link-ed::after{content:none}
+.micro{align-items:flex-start}
+.micro .dot{margin-top:.45em}
 /* ============ fim da camada PREMIUM POLISH ============ */
 
 /* ---------- Animações de entrada ---------- */
@@ -889,7 +903,7 @@ footer{border-top:1px solid var(--linha-escura)}
   <div class="wrap">
     <div>
       <p class="hero-premio"><svg aria-hidden="true" focusable="false"><use href="#i-trofeu"/></svg><span><b>1º lugar</b> no Sales Pesquisa · <b>3 anos consecutivos</b></span></p>
-      <span class="sig">Bronzeamento natural e artificial · Lavras MG</span>
+      <span class="sig">Bronzeamento natural e artificial ·&nbsp;Lavras&nbsp;MG</span>
       <h1 class="display hero-title" id="t-hero">Santo<br><em class="it">Bronze</em><span class="script" aria-hidden="true">glow</span></h1>
       <p class="lead">Marquinha desenhada, cor por igual e aquele dourado de quem acabou de voltar das férias. Bronze natural ou a jato, com o tom definido a partir da avaliação da sua pele.</p>
       <div class="hero-actions">
@@ -963,7 +977,7 @@ footer{border-top:1px solid var(--linha-escura)}
             <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Combina com o bronze natural ou artificial</li>
           </ul>
           <div class="preco"><b>Valores e horários pelo WhatsApp</b><span>Com hora marcada</span></div>
-          <a class="link-ed" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Quero%20agendar%20um%20banho%20de%20lua." target="_blank" rel="noopener" data-cta="servico-banho-de-lua">Quero um banho de lua</a>
+          <a class="link-ed" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Quero%20agendar%20um%20banho%20de%20lua." target="_blank" rel="noopener" data-cta="servico-banho-de-lua">Quero agendar um banho de lua</a>
         </div>
       </article>
 
@@ -1298,8 +1312,6 @@ footer{border-top:1px solid var(--linha-escura)}
         <div class="numeros">
           <div><b>+ 5.000</b><span>Mulheres atendidas</span></div>
           <div><b>1º lugar</b><span>Sales Pesquisa, 3 anos consecutivos</span></div>
-          <div><b>4,9</b><span>Nota média no Google</span></div>
-          <div><b>79</b><span>Avaliações públicas</span></div>
         </div>
 
         <div class="selos">
@@ -1405,18 +1417,22 @@ footer{border-top:1px solid var(--linha-escura)}
         </div>
 
         <div class="campo-f" id="f-ocasiao">
-          <label for="ocasiao">Para qual ocasião?</label>
+          <label for="ocasiao">O que você procura?</label>
           <select class="input" id="ocasiao" name="ocasiao" aria-describedby="e-ocasiao">
             <option value="">Escolha uma opção</option>
-            <option>um casamento</option>
-            <option>um evento</option>
-            <option>viagem ou verão</option>
-            <option>manter meu bronze</option>
-            <option>minha primeira vez</option>
-            <option>o curso de bronzeamento</option>
-            <option>a mentoria</option>
+            <optgroup label="Bronzeamento">
+              <option value="um casamento">Bronze para um casamento</option>
+              <option value="um evento">Bronze para um evento</option>
+              <option value="viagem ou verão">Bronze para viagem ou verão</option>
+              <option value="manter meu bronze">Manter meu bronze</option>
+              <option value="minha primeira vez">Minha primeira vez</option>
+            </optgroup>
+            <optgroup label="Para profissionais">
+              <option value="o curso de bronzeamento">Curso de bronzeamento</option>
+              <option value="a mentoria">Mentoria</option>
+            </optgroup>
           </select>
-          <p class="msg-erro" id="e-ocasiao">Escolha a ocasião para indicarmos o tom certo.</p>
+          <p class="msg-erro" id="e-ocasiao">Escolha uma opção para a gente te atender do jeito certo.</p>
         </div>
 
         <button class="btn" type="submit">
