@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Santo Bronze — Bronzeamento natural e a jato em Lavras MG</title>
-<meta name="description" content="Especialista em bronzeamento natural e a jato em Lavras, MG. 1º lugar no Sales Pesquisa 2026, mais de 5000 mulheres atendidas e nota 4,9 no Google. Protocolo individual para cada pele. Agende pelo WhatsApp.">
+<meta name="description" content="Especialista em bronzeamento natural e a jato em Lavras, MG. 1º lugar no Sales Pesquisa por 3 anos consecutivos, mais de 5.000 mulheres atendidas e nota 4,9 no Google. Protocolo individual para cada pele. Agende pelo WhatsApp.">
 <meta name="theme-color" content="#2A160B">
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon-180.png">
@@ -12,7 +12,7 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="Santo Bronze — Bronzeamento natural e a jato em Lavras MG">
 <meta property="og:image" content="assets/hero-video-poster.jpg">
-<meta property="og:description" content="Mais de 5000 mulheres atendidas e nota 4,9 no Google. Protocolo individual para cada pele.">
+<meta property="og:description" content="Mais de 5.000 mulheres atendidas e nota 4,9 no Google. Protocolo individual para cada pele.">
 
 <!-- FONTES — as 3 tags abaixo são o único recurso externo da página.
      Remova-as para rodar 100% offline: os fallbacks (Georgia / fonte de sistema)
@@ -140,8 +140,11 @@ p+p{margin-top:var(--space-3)}
 .hero::after{content:"";position:absolute;inset:0;background-image:var(--grain-claro);opacity:.07;pointer-events:none}
 .hero>.wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:end;padding-top:var(--space-8);padding-bottom:var(--space-7);position:relative;z-index:1;min-height:clamp(600px,86vh,860px)}
 .hero .sig{color:var(--champanhe);margin-bottom:32px;display:block}
-.hero-title{position:relative;color:var(--champanhe)}
-.hero-title .script{position:absolute;right:2%;bottom:-.3em;font-size:1.15em;color:var(--mel);transform:rotate(-6deg);pointer-events:none}
+.hero-premio{display:inline-flex;align-items:center;gap:10px;margin-bottom:24px;padding:8px 16px 8px 12px;border:1px solid rgba(212,162,92,.6);background:rgba(42,22,11,.55);backdrop-filter:blur(4px);border-radius:var(--radius-xs);color:#F6E6CC;font-size:14px;line-height:1.35;font-weight:500}
+.hero-premio svg{width:20px;height:20px;color:var(--mel);flex:0 0 auto}
+.hero-premio b{color:var(--mel);font-weight:600}
+.hero-title{position:relative;color:var(--champanhe);display:inline-block;padding-right:.2em}
+.hero-title .script{position:absolute;right:-.95em;bottom:-.3em;font-size:1.15em;color:var(--mel);transform:rotate(-6deg);pointer-events:none}
 .hero .lead{color:#EADCC7;margin-top:72px}
 .hero-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:32px}
 .hero .micro{color:var(--champanhe)}
@@ -207,11 +210,18 @@ section.bloco.alt{background:var(--areia)}
 
 /* Escuro — "Como funciona": carvão, que o design system reserva para conteúdo educativo */
 section.bloco.fundo-escuro{background:var(--carvao);border-bottom-color:transparent}
-.fundo-escuro .fundo-foto::after{background:linear-gradient(180deg,rgba(47,43,40,.9) 0%,rgba(47,43,40,.86) 26%,rgba(47,43,40,.72) 62%,rgba(47,43,40,.9) 100%)}
+/* Foto de fundo (pele em luz dourada) sob véu carvão. O véu fica mais fechado no topo, onde estão
+   título e texto, e abre no meio para a pele aparecer entre os dois cartões. */
+section.bloco.fundo-escuro{position:relative;overflow:hidden}
+.fundo-escuro .fundo-foto img{object-position:50% 55%}
+.fundo-escuro .fundo-foto::before{opacity:.07}
+.fundo-escuro .fundo-foto::after{background:linear-gradient(180deg,rgba(47,43,40,.9) 0%,rgba(47,43,40,.84) 30%,rgba(47,43,40,.66) 62%,rgba(47,43,40,.88) 100%)}
+@media (max-width:860px){.fundo-escuro .fundo-foto::after{background:rgba(47,43,40,.84)}}
+.fundo-escuro .wrap{position:relative;z-index:1}
 .fundo-escuro .sec-head .sig{color:var(--mel)}
 .fundo-escuro .sec-head .h1{color:#F6E6CC}
 .fundo-escuro .sec-head .lead.muted{color:#EADCC7}
-.fundo-escuro .linha-tempo{background:rgba(42,22,11,.74);border-color:rgba(232,207,166,.3);backdrop-filter:blur(6px)}
+.fundo-escuro .linha-tempo{background:var(--espresso);border-color:rgba(232,207,166,.22)}
 
 /* Claro — formulário sobre foto dourada desfocada (previsto no design system) */
 .fundo-claro .fundo-foto::before{display:none}
@@ -228,26 +238,53 @@ section.bloco.fundo-escuro{background:var(--carvao);border-bottom-color:transpar
 @media (max-width:860px){.manifesto-grid{grid-template-columns:1fr;gap:40px}}
 .manifesto-texto p{color:var(--texto-2);font-size:17px}
 .manifesto-texto p strong{color:var(--espresso);font-weight:500}
+.manifesto-texto p.destaque{font-size:clamp(24px,2.6vw,30px);color:var(--cacau)}
 .destaque{font-family:var(--font-display);font-size:clamp(24px,2.6vw,30px);line-height:1.25;color:var(--cacau);border-left:2px solid var(--mel);padding-left:20px;margin-top:var(--space-5)}
 
-/* Escala de tons (gráfico interativo) */
+/* Dentro para fora: o que ajuda e o que atrapalha o bronze */
+.equilibrio{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:var(--space-4)}
+.equilibrio > div{background:var(--creme);border:1px solid var(--linha);border-top:2px solid var(--mel);padding:18px 18px 16px}
+.equilibrio > div.atrapalha{border-top-color:var(--ambar)}
+.equilibrio h3{font-family:var(--font-body);font-weight:600;font-size:15px;color:var(--espresso);margin-bottom:10px}
+.equilibrio ul{list-style:none;display:grid;gap:10px}
+.equilibrio li{display:grid;grid-template-columns:18px 1fr;gap:10px;font-size:15px;line-height:1.45;color:var(--texto-2)}
+.equilibrio li strong{color:var(--espresso);font-weight:500}
+.equilibrio li svg{width:14px;height:14px;margin-top:4px;color:var(--caramelo)}
+.equilibrio .atrapalha li svg{color:var(--ambar)}
+@media (max-width:520px){.equilibrio{grid-template-columns:1fr}}
+
+/* Escala de fototipos (gráfico interativo, escala de Fitzpatrick) */
 .tons{background:var(--creme);border:1px solid var(--linha);padding:28px}
 .tons h3{margin-bottom:6px}
 .tons .small{color:var(--texto-2)}
-.tons-barra{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:20px;border:1px solid var(--linha)}
-.tons-barra button{appearance:none;border:0;border-right:1px solid rgba(251,243,228,.5);cursor:pointer;height:96px;position:relative;padding:0;transition:transform .2s ease,filter .2s ease}
+.tons-barra{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:20px;border:1px solid var(--linha)}
+.tons-barra button{appearance:none;border:0;border-right:1px solid rgba(251,243,228,.5);cursor:pointer;height:96px;min-width:44px;position:relative;padding:0;transition:transform .2s ease,filter .2s ease}
 .tons-barra button:last-child{border-right:0}
 .tons-barra button:hover{filter:brightness(1.06)}
 .tons-barra button[aria-pressed="true"]{transform:scaleY(1.12);z-index:2;box-shadow:var(--shadow-md)}
-.tons-barra button[aria-pressed="true"]::after{content:"";position:absolute;inset:0;border:2px solid var(--espresso)}
-.tons-barra .num{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:var(--font-display);font-size:20px;color:rgba(42,22,11,.55)}
-.tons-barra button[aria-pressed="true"] .num{color:var(--espresso)}
+.tons-barra button[aria-pressed="true"]::after{content:"";position:absolute;inset:0;border:2px solid var(--espresso);box-shadow:inset 0 0 0 2px var(--creme)}
+.tons-barra .num{position:absolute;left:0;right:0;bottom:8px;text-align:center;font-family:var(--font-display);font-size:19px;color:rgba(42,22,11,.6)}
+.tons-barra button.escuro .num{color:rgba(251,243,228,.75)}
+.tons-barra button[aria-pressed="true"] .num{color:var(--espresso);font-weight:600}
+.tons-barra button.escuro[aria-pressed="true"] .num{color:#FBF3E4}
 .tons-legenda{display:flex;justify-content:space-between;font-size:13px;color:var(--texto-2);margin-top:8px}
-.tons-info{margin-top:20px;border-top:1px solid var(--linha);padding-top:18px;min-height:120px}
+.tons-info{margin-top:20px;border-top:1px solid var(--linha);padding-top:18px;min-height:230px}
 .tons-info b{display:block;font-family:var(--font-display);font-weight:500;font-style:italic;font-size:24px;line-height:1.2;color:var(--cacau)}
 .tons-info p{font-size:15px;color:var(--texto-2);margin-top:8px}
-.tons-info .quem{font-size:14px;color:var(--espresso);margin-top:10px;display:flex;align-items:center;gap:8px}
-.tons-info .quem svg{width:16px;height:16px;color:var(--caramelo);flex:0 0 auto}
+.tons-info dl{margin-top:14px;display:grid;gap:10px}
+.tons-info dl div{display:grid;grid-template-columns:26px 1fr;column-gap:10px;row-gap:2px;align-items:start}
+.tons-info dt{font-size:14px;font-weight:600;color:var(--espresso)}
+.tons-info dd{font-size:15px;color:var(--texto-2);grid-column:2}
+.tons-info dl svg{width:18px;height:18px;color:var(--caramelo);grid-row:span 2;margin-top:2px}
+.tons-aviso{margin-top:18px;padding:12px 14px;background:var(--areia);font-size:14px;line-height:1.5;color:var(--espresso);border-left:2px solid var(--mel)}
+@media (max-width:420px){
+  .tons{padding:22px 18px}
+  .tons-barra{grid-template-columns:repeat(3,1fr)}
+  .tons-barra button{height:64px}
+  .tons-barra button:nth-child(3){border-right:0}
+  .tons-barra button:nth-child(-n+3){border-bottom:1px solid rgba(251,243,228,.5)}
+  .tons-barra button[aria-pressed="true"]{transform:scale(1.04)}
+}
 
 /* ---------- Serviços ---------- */
 .cards-serv{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -342,7 +379,7 @@ section.alt .mini-frases p{background:var(--creme)}
 /* Galeria de resultados */
 .galeria-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-top:var(--space-6);border-top:1px solid var(--linha);padding-top:20px;margin-bottom:var(--space-4)}
 .galeria-head p{color:var(--texto-2);font-size:15px}
-.galeria{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;list-style:none}
+.galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;list-style:none}
 .galeria figure{margin:0}
 .galeria figcaption{font-size:14px;color:var(--texto-2);margin-top:8px;line-height:1.4}
 @media (max-width:860px){.galeria{grid-template-columns:repeat(2,1fr)}}
@@ -361,6 +398,48 @@ section.alt .mini-frases p{background:var(--creme)}
 section.alt .numeros div{background:var(--areia)}
 .numeros b{display:block;font-family:var(--font-display);font-size:clamp(30px,3.6vw,40px);line-height:1;color:var(--caramelo)}
 .numeros span{font-size:14px;color:var(--texto-2);display:block;margin-top:6px;line-height:1.4}
+
+/* ---------- Cursos (para profissionais) ----------
+   Fundo Espresso para marcar que a conversa aqui é com outro público. */
+section.bloco.cursos{background:var(--espresso);color:var(--champanhe);position:relative;overflow:hidden;border-bottom-color:transparent}
+.cursos::after{content:"";position:absolute;inset:0;background-image:var(--grain-claro);opacity:.07;pointer-events:none}
+.cursos .wrap{position:relative;z-index:1}
+.cursos .folha{position:absolute;left:-140px;top:60px;width:520px;opacity:.07;color:var(--mel);pointer-events:none;z-index:0}
+.cursos .sec-head .sig{color:var(--mel)}
+.cursos .sec-head .h1{color:#F6E6CC}
+.cursos .sec-head .h1 .script{color:var(--mel)}
+.cursos .sec-head .lead{color:#EADCC7}
+.cursos-lista{display:grid;gap:24px}
+.curso-card{display:grid;grid-template-columns:.8fr 1.2fr;background:rgba(232,207,166,.05);border:1px solid rgba(232,207,166,.18)}
+.curso-card.invertido{grid-template-columns:1.2fr .8fr}
+.curso-card.invertido .img-4x5{order:2}
+.curso-card .img-4x5{aspect-ratio:auto;min-height:100%;background:var(--cacau)}
+.curso-corpo{padding:44px 44px 40px;display:flex;flex-direction:column;gap:16px}
+.curso-tag{align-self:flex-start;font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--espresso);background:var(--mel);padding:5px 12px;border-radius:var(--radius-xs)}
+.curso-corpo h3{font-family:var(--font-display);font-weight:400;font-size:clamp(34px,4.4vw,44px);line-height:1;letter-spacing:-.01em;color:#F6E6CC}
+.curso-corpo > p{color:#EADCC7;font-size:16px;max-width:560px}
+.curso-corpo h4{font-family:var(--font-body);font-weight:600;font-size:15px;color:var(--mel);margin-top:8px}
+.curso-itens{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:10px 24px}
+.curso-itens li{display:grid;grid-template-columns:18px 1fr;gap:10px;font-size:15px;line-height:1.45;color:#F3E2C6}
+.curso-itens svg{width:14px;height:14px;color:var(--mel);margin-top:4px}
+.curso-dif{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(232,207,166,.18);border:1px solid rgba(232,207,166,.18);margin-top:8px}
+.curso-dif li{background:var(--espresso);padding:14px 12px;display:flex;flex-direction:column;gap:6px;font-size:13px;line-height:1.35;color:#EADCC7}
+.curso-dif svg{width:22px;height:22px;color:var(--mel)}
+.curso-dif b{display:block;color:#F6E6CC;font-size:14px;font-weight:600}
+.curso-bonus{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.curso-bonus .sig{color:var(--mel);margin-right:4px}
+.curso-bonus .selo{font-size:14px}
+.curso-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:8px}
+.curso-acoes .micro{margin-top:0;color:var(--champanhe)}
+.curso-corpo > p.curso-frase{font-family:var(--font-display);font-style:italic;font-size:clamp(20px,2.2vw,24px);line-height:1.3;color:#F3E2C6;border-left:2px solid var(--mel);padding-left:18px}
+@media (max-width:1023px){.curso-dif{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:860px){
+  .curso-card,.curso-card.invertido{grid-template-columns:1fr}
+  .curso-card.invertido .img-4x5{order:0}
+  .curso-card .img-4x5{aspect-ratio:4/3;min-height:0}
+  .curso-corpo{padding:32px 24px}
+}
+@media (max-width:520px){.curso-itens{grid-template-columns:1fr}}
 
 /* ---------- Dúvidas ---------- */
 .faq{max-width:820px}
@@ -451,17 +530,13 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
    O design system empilha tudo a partir de 860px. Nesta faixa sobra largura:
    os blocos em lista voltam a duas ou três colunas, sem quebrar a hierarquia. */
 @media (min-width:768px) and (max-width:1023px){
-  .cards-serv{grid-template-columns:repeat(2,1fr)}
-  .cards-serv>article:nth-child(3){grid-column:1/-1;flex-direction:row}
-  .cards-serv>article:nth-child(3) .img-4x5{flex:0 0 38%;aspect-ratio:auto}
-  .cards-serv>article:nth-child(3) .corpo{flex:1}
   .deps{grid-template-columns:repeat(2,1fr)}
   .deps>.card-dep{grid-column:1/-1}
   .mini-frases{grid-template-columns:repeat(2,1fr)}
   .numeros{grid-template-columns:repeat(4,1fr)}
   .retrato{aspect-ratio:4/3}
   .retrato>img{object-position:50% 22%}
-  .galeria{grid-template-columns:repeat(4,1fr)}
+  .galeria{grid-template-columns:repeat(3,1fr)}
   .sec-head{grid-template-columns:1fr 1fr;gap:40px}
   .contato-info{grid-template-columns:repeat(2,1fr);gap:0 40px}
 }
@@ -474,8 +549,263 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   .display{font-size:52px}
 }
 
+/* ============================================================
+   PREMIUM POLISH — camada de direção de arte (setembro de 2026)
+   Refina o que já existe: menos caixas, mais respiro, hierarquia
+   editorial. Tokens e cores continuam os do design system.
+   Para desfazer, basta remover este bloco inteiro.
+   ============================================================ */
+
+:root{
+  --secao:clamp(96px,10.5vw,148px);   /* respiro vertical das seções */
+  --ease-suave:cubic-bezier(.22,.75,.3,1);
+  --linha-escura:rgba(232,207,166,.16);
+}
+
+/* ---------- Ritmo e tipografia base ---------- */
+body{line-height:1.68;text-rendering:optimizeLegibility}
+p+p{margin-top:18px}
+section.bloco{padding:var(--secao) 0;border-bottom:0}
+.sec-head{gap:clamp(32px,6vw,88px);margin-bottom:clamp(48px,6vw,80px);align-items:end}
+.sec-head p.lead{max-width:34em}
+.lead{line-height:1.7}
+.h1{letter-spacing:-.02em}
+
+/* Eyebrow editorial: caixa-alta espaçada com um fio antes */
+.sig{font-size:12px;letter-spacing:.26em}
+.sec-head .sig{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.sec-head .sig::before{content:"";width:28px;height:1px;background:currentColor;opacity:.55}
+
+/* ---------- Topo ---------- */
+.topbar{transition:box-shadow .4s ease,background .4s ease}
+.topbar.rolou{box-shadow:0 10px 30px -22px rgba(42,22,11,.45);background:rgba(251,243,228,.97)}
+.topbar .wrap{min-height:72px}
+.topbar nav{gap:26px}
+.topbar nav a{position:relative;border-bottom:0;letter-spacing:.01em}
+.topbar nav a::after{content:"";position:absolute;left:0;right:0;bottom:10px;height:1px;background:var(--ambar);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease-suave)}
+.topbar nav a:hover::after,.topbar nav a:focus-visible::after{transform:scaleX(1)}
+@media (max-width:760px){
+  .topbar .wrap{min-height:64px}
+  .marca img{height:46px}
+  /* o menu rola na horizontal: o esmaecido à direita mostra que há mais itens */
+  .topbar nav{gap:20px;padding-right:28px;-webkit-mask-image:linear-gradient(90deg,#000 78%,transparent);mask-image:linear-gradient(90deg,#000 78%,transparent)}
+}
+
+/* ---------- Botões e links ---------- */
+.btn{min-height:54px;padding:0 30px;font-size:15px;letter-spacing:.02em;transition:background .35s var(--ease-suave),border-color .35s var(--ease-suave),box-shadow .35s var(--ease-suave),transform .35s var(--ease-suave),color .35s var(--ease-suave)}
+.btn:hover{transform:translateY(-1px);box-shadow:0 14px 28px -16px rgba(42,22,11,.55)}
+.btn.mel:hover{box-shadow:0 14px 30px -14px rgba(212,162,92,.7)}
+.btn:active{transform:translateY(0);box-shadow:none}
+.btn:hover svg{transform:translateX(3px)}
+.btn.sec{border-color:rgba(90,45,20,.45)}
+.btn.sec.claro{border-color:rgba(232,207,166,.5)}
+/* sublinhado editorial que "desenha" no hover (continua sublinhado em repouso) */
+.link-ed{text-decoration:none;background-image:linear-gradient(currentColor,currentColor);background-size:100% 1px;background-position:0 calc(100% - 10px);background-repeat:no-repeat;transition:background-size .45s var(--ease-suave),color .3s}
+.link-ed:hover{background-size:0% 1px;background-position:100% calc(100% - 10px)}
+.link-ed::after{content:"\2192";margin-left:8px;transition:transform .35s var(--ease-suave)}
+.link-ed:hover::after{transform:translateX(4px)}
+.micro{font-size:13px;letter-spacing:.01em}
+
+/* ---------- Hero ---------- */
+.hero>.wrap{padding-top:clamp(120px,14vw,168px);padding-bottom:clamp(88px,9vw,120px)}
+.hero-premio{background:rgba(42,22,11,.28);backdrop-filter:none;border-color:rgba(212,162,92,.45);font-size:13px;letter-spacing:.02em;padding:7px 14px 7px 11px;margin-bottom:28px}
+.hero-premio svg{width:17px;height:17px}
+.hero .sig{margin-bottom:26px;opacity:.9}
+.hero-title .script{font-size:.92em;right:-1.02em;bottom:-.32em}
+.hero .lead{margin-top:64px;max-width:30em;font-size:clamp(17px,1.5vw,19px)}
+.hero-actions{margin-top:36px;gap:14px}
+/* Assinatura vira legenda de campanha: acompanha a imagem sem disputar com o título */
+.hero-assinatura{font-size:inherit;line-height:1.3;text-shadow:0 1px 18px rgba(42,22,11,.6);max-width:230px;padding-top:18px;border-top:1px solid rgba(255,243,226,.4)}
+.hero-assinatura em{display:block;font-family:var(--font-display);font-style:italic;font-weight:400;font-size:30px;line-height:1;letter-spacing:-.01em;color:#FFF3E2}
+.hero-assinatura small{margin-top:10px;font-size:14px;font-weight:400;color:#F6E6CC;max-width:none}
+/* sombra localizada atrás da legenda: garante contraste AA sobre o brilho da pele, sem escurecer o resto do vídeo */
+@media (min-width:861px){.hero-midia::after{background:radial-gradient(38% 42% at 86% 84%,rgba(42,22,11,.62),rgba(42,22,11,0) 72%),linear-gradient(90deg,rgba(42,22,11,.94) 0%,rgba(42,22,11,.84) 34%,rgba(42,22,11,.32) 64%,rgba(42,22,11,.08) 100%),linear-gradient(180deg,rgba(42,22,11,.5) 0%,rgba(42,22,11,0) 20%,rgba(154,74,24,0) 55%,rgba(154,74,24,.5) 86%,rgba(42,22,11,.92) 100%)}}
+/* Faixa de prova: linha editorial, sem células de painel */
+.faixa-prova{border-top-color:var(--linha-escura);background:rgba(42,22,11,.72);backdrop-filter:blur(6px)}
+.hero .faixa-prova .wrap{padding:0 24px}
+.faixa-prova ul{background:none;gap:0}
+.faixa-prova li{background:none;padding:30px 28px;border-left:1px solid var(--linha-escura)}
+.faixa-prova li:first-child{border-left:0;padding-left:0}
+.faixa-prova b{font-size:clamp(26px,2.6vw,34px);letter-spacing:-.01em}
+.faixa-prova span{font-size:13px;letter-spacing:.01em;color:rgba(232,207,166,.88)}
+/* os números vivem num span dentro do <b>: não podem herdar o tamanho da legenda (bug antigo) */
+.faixa-prova b span{font-size:inherit;letter-spacing:inherit;color:inherit;line-height:inherit}
+@media (max-width:860px){
+  .hero>.wrap{padding-top:88px;padding-bottom:160px}
+  .hero-title .script{right:-1em;bottom:-.46em;left:auto}
+  .hero .lead{margin-top:56px}
+}
+@media (max-width:760px){
+  .faixa-prova li{padding:22px 16px;border-left:0}
+  .faixa-prova li:nth-child(odd){padding-left:0}
+  .faixa-prova li:nth-child(even){border-left:1px solid var(--linha-escura);padding-left:18px}
+  .faixa-prova li:nth-child(n+3){border-top:1px solid var(--linha-escura)}
+}
+@media (max-width:520px){.hero .faixa-prova .wrap{padding:0 20px}}
+
+/* ---------- Manifesto ---------- */
+.manifesto-grid{gap:clamp(40px,6vw,88px)}
+.manifesto-texto p{line-height:1.75}
+/* ajuda / atrapalha: duas colunas com fio, sem caixas */
+.equilibrio{gap:32px;margin-top:40px}
+.equilibrio > div{background:none;border:0;border-top:1px solid rgba(90,45,20,.28);padding:22px 0 0}
+.equilibrio > div.atrapalha{border-top-color:rgba(154,74,24,.28)}
+.equilibrio h3{font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--cacau);margin-bottom:14px}
+.equilibrio ul{gap:14px}
+.manifesto-texto p.destaque{margin-top:48px}
+/* o widget de fototipos é o único cartão da seção */
+.tons{border:0;padding:clamp(28px,3.4vw,40px);box-shadow:0 30px 60px -40px rgba(90,45,20,.35)}
+.tons h3.h4{font-family:var(--font-display);font-weight:400;font-size:clamp(26px,2.6vw,30px);line-height:1.1;letter-spacing:-.01em;margin-bottom:10px}
+.tons-barra{border:0}
+
+/* ---------- Serviços: serviço principal em destaque ---------- */
+.cards-serv{grid-template-columns:repeat(2,1fr);gap:clamp(56px,6vw,88px) clamp(32px,4vw,56px);counter-reset:serv}
+.card-serv{background:none;border:0;counter-increment:serv}
+.card-serv:hover{box-shadow:none;transform:none}
+.card-serv .img-4x5{aspect-ratio:4/3}
+.card-serv .img-4x5>img{transition:transform 1.4s var(--ease-suave)}
+.card-serv:hover .img-4x5>img{transform:scale(1.035)}
+.card-serv .corpo{padding:28px 0 0;gap:14px}
+.card-serv .corpo::before{content:"0" counter(serv);font-size:12px;font-weight:600;letter-spacing:.22em;color:var(--ambar)}
+.card-serv h3.h3{font-weight:400;font-size:clamp(28px,2.8vw,34px);letter-spacing:-.01em}
+.card-serv p{font-size:16px;line-height:1.7}
+.card-serv ul{gap:10px}
+.card-serv .preco{border-top-color:rgba(90,45,20,.18);padding-top:16px;margin-top:10px}
+.card-serv .link-ed{align-self:flex-start}
+/* 01 — bronzeamento: horizontal, ocupa a linha inteira */
+.cards-serv>.card-serv:first-child{grid-column:1/-1;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(32px,5vw,72px);align-items:center}
+.cards-serv>.card-serv:first-child .img-4x5{aspect-ratio:5/4}
+.cards-serv>.card-serv:first-child .corpo{padding:0}
+.cards-serv>.card-serv:first-child h3.h3{font-size:clamp(34px,3.8vw,48px);line-height:1.02}
+@media (max-width:860px){
+  .cards-serv{grid-template-columns:1fr;gap:64px}
+  .cards-serv>.card-serv:first-child{grid-template-columns:1fr;gap:0}
+  .cards-serv>.card-serv:first-child .img-4x5{aspect-ratio:4/3}
+  .cards-serv>.card-serv:first-child .corpo{padding-top:28px}
+}
+/* selos: contorno fino em vez de etiquetas cheias */
+.selo{background:transparent;color:var(--cacau);border:1px solid rgba(90,45,20,.3);font-size:13px;letter-spacing:.02em;padding:7px 14px}
+.selo.escuro{background:transparent;color:var(--cacau);border-color:rgba(90,45,20,.3)}
+#servicos .selos{margin-top:clamp(64px,7vw,96px);padding-top:32px;border-top:1px solid rgba(90,45,20,.14);gap:10px}
+#servicos .cta-dupla{margin-top:28px}
+
+/* ---------- Como funciona ---------- */
+.etapas{border:0;padding:clamp(32px,4vw,48px)}
+.etapas li{padding:22px 0}
+.etapas li::before{font-size:44px}
+.linha-tempo{padding:clamp(28px,3.4vw,40px)}
+
+/* ---------- Prova social: menos caixas, mais editorial ---------- */
+.nota-card{padding:clamp(32px,3.4vw,44px)}
+.deps{gap:0}
+.card-dep{background:none;color:var(--cacau);padding:0 0 36px;overflow:visible}
+.card-dep .sig{color:var(--ambar)}
+.card-dep blockquote{color:var(--cacau);font-size:clamp(28px,3vw,38px);line-height:1.18;letter-spacing:-.01em;margin:18px 0 20px}
+.card-dep .quem{color:var(--texto-2)}
+.card-dep .quem b{color:var(--espresso);font-weight:600;font-size:15px}
+.card-dep .folha{display:none}
+.dep{background:none;border:0;border-top:1px solid rgba(90,45,20,.16);padding:28px 0}
+.dep blockquote{font-size:clamp(18px,1.7vw,21px);line-height:1.45}
+.dep .quem{margin-top:14px;gap:4px 10px}
+.dep .quem b::after{content:"\00B7";margin-left:10px;color:var(--mel);font-weight:400}
+.mini-frases{gap:32px;margin-top:40px}
+.mini-frases p,section.alt .mini-frases p{background:none;padding:2px 0 2px 18px;border-left:1px solid var(--mel);font-family:var(--font-display);font-size:18px;line-height:1.45;color:var(--cacau)}
+
+/* Resultados reais: composição de revista, colunas desencontradas */
+.galeria-head{border-top:0;padding-top:0;margin-top:clamp(96px,10vw,140px);margin-bottom:clamp(32px,4vw,48px);align-items:end}
+.galeria-head .h3{font-weight:400;font-size:clamp(34px,4.4vw,52px);line-height:1;letter-spacing:-.015em}
+.galeria-head p{max-width:22em;font-size:15px}
+.galeria{gap:clamp(16px,2.2vw,28px);padding-bottom:clamp(56px,6vw,88px);counter-reset:res}
+.galeria li{counter-increment:res}
+.galeria li:nth-child(3n+2){transform:translateY(clamp(40px,5vw,88px))}
+.galeria .img-4x5>img{transition:transform 1.4s var(--ease-suave)}
+.galeria figure:hover img{transform:scale(1.035)}
+.galeria figcaption{display:flex;gap:12px;align-items:baseline;margin-top:14px;font-size:14px}
+.galeria figcaption::before{content:"0" counter(res);font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--ambar)}
+@media (max-width:860px){
+  .galeria li:nth-child(3n+2){transform:none}
+  .galeria li:nth-child(even){transform:translateY(40px)}
+}
+@media (min-width:768px) and (max-width:860px){
+  .galeria li:nth-child(even){transform:none}
+  .galeria li:nth-child(3n+2){transform:translateY(48px)}
+}
+.premio{margin-top:clamp(56px,6vw,88px)}
+.premio .txt{padding:clamp(40px,5vw,64px)}
+
+/* ---------- Quem aplica ---------- */
+.quem-grid{gap:clamp(40px,6vw,96px)}
+.numeros,section.alt .numeros{background:none;border:0;gap:0 32px;margin-top:40px}
+.numeros div,section.alt .numeros div{background:none;padding:20px 0;border-top:1px solid rgba(90,45,20,.2)}
+.retrato .selo-logo{box-shadow:0 18px 40px -24px rgba(42,22,11,.6)}
+
+/* ---------- Cursos ---------- */
+.cursos-lista{gap:clamp(24px,3vw,40px)}
+.curso-card{border-color:var(--linha-escura);background:rgba(232,207,166,.035)}
+.curso-corpo{padding:clamp(32px,4.4vw,60px);gap:18px}
+.curso-tag{background:transparent;color:var(--mel);border:1px solid rgba(212,162,92,.55);letter-spacing:.06em;font-size:12px;padding:6px 12px}
+.curso-corpo h4{font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-top:10px}
+.curso-dif{background:none;border:0;border-top:1px solid var(--linha-escura);gap:20px;padding-top:24px;margin-top:10px}
+.curso-dif li{background:none;padding:0}
+.cursos .selo,.cursos .selo.escuro{color:var(--champanhe);border-color:rgba(232,207,166,.4)}
+.curso-card .img-4x5>img{transition:transform 1.4s var(--ease-suave)}
+.curso-card:hover .img-4x5>img{transform:scale(1.03)}
+
+/* ---------- Dúvidas ---------- */
+.faq{max-width:880px}
+.faq details{border-bottom-color:rgba(90,45,20,.16)}
+.faq details:first-child{border-top:1px solid rgba(90,45,20,.16)}
+.faq summary{padding:26px 64px 26px 0;font-size:clamp(17px,1.6vw,19px);min-height:64px}
+.faq summary::after,.faq summary::before{content:"";position:absolute;right:12px;top:50%;width:16px;height:1.5px;margin:0;border:0;background:var(--caramelo);transform:none;transition:transform .4s var(--ease-suave),opacity .4s}
+.faq summary::before{transform:rotate(90deg)}
+.faq details[open] summary::after{transform:none;margin:0}
+.faq details[open] summary::before{transform:rotate(0);opacity:0}
+.faq .resposta{padding:0 64px 30px 0;line-height:1.75;max-width:64ch}
+/* destaque de marca-texto discreto em vez de etiqueta cheia */
+.faixa-melasma mark{background:linear-gradient(transparent 60%,rgba(212,162,92,.42) 60%);padding:0 4px;color:var(--espresso);font-family:var(--font-display);font-size:inherit;letter-spacing:0}
+@media (max-width:520px){.faq summary{padding-right:48px}.faq .resposta{padding-right:0}}
+
+/* ---------- Formulário ---------- */
+.form-card{border:0;padding:clamp(32px,4.4vw,56px);box-shadow:0 40px 80px -48px rgba(90,45,20,.45)}
+.campo-f{margin-top:22px}
+.campo-f label{letter-spacing:.01em;margin-bottom:10px}
+.input{height:54px;transition:border-color .3s,box-shadow .3s,background .3s}
+.input:focus{background:#fff}
+.form-card .btn{margin-top:32px}
+.contato-info .item{border-bottom-color:rgba(90,45,20,.14);padding:22px 0}
+.contato-info{border-top-color:rgba(90,45,20,.14)}
+
+/* ---------- Fechamento ---------- */
+.tom{padding:var(--secao) 0}
+.tom .h1{margin:18px 0 32px}
+
+/* ---------- Rodapé ---------- */
+footer{padding:clamp(64px,7vw,96px) 0 36px}
+footer .cols{gap:clamp(32px,5vw,72px);padding-bottom:48px;border-bottom-color:var(--linha-escura)}
+footer h2{letter-spacing:.24em;margin-bottom:18px}
+footer a{text-decoration:none;background-image:linear-gradient(currentColor,currentColor);background-size:100% 1px;background-position:0 calc(100% - 11px);background-repeat:no-repeat;transition:background-size .45s var(--ease-suave),color .3s}
+footer a:hover{background-size:0% 1px;background-position:100% calc(100% - 11px)}
+footer .base{padding-top:28px;font-size:13px}
+
+/* ---------- Mobile: produto próprio, não desktop espremido ---------- */
+@media (max-width:760px){
+  :root{--secao:80px}
+  .sec-head{margin-bottom:44px;gap:18px}
+  .sec-head .sig{margin-bottom:16px}
+  .card-serv .corpo{padding-top:22px}
+  .galeria-head{margin-top:88px}
+  .mini-frases{gap:20px}
+  .numeros,section.alt .numeros{gap:0 20px}
+  .curso-dif{gap:18px 16px}
+  .faq summary{min-height:56px;padding-top:20px;padding-bottom:20px}
+}
+@media (max-width:520px){
+  .hero-actions{gap:12px}
+}
+/* ============ fim da camada PREMIUM POLISH ============ */
+
 /* ---------- Animações de entrada ---------- */
-.rev{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.75,.3,1)}
+.rev{opacity:0;transform:translateY(14px);transition:opacity 1s ease,transform 1s cubic-bezier(.22,.75,.3,1)}
 .rev.on{opacity:1;transform:none}
 .rev.d1{transition-delay:.08s}.rev.d2{transition-delay:.16s}.rev.d3{transition-delay:.24s}
 
@@ -494,6 +824,11 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 <!-- Biblioteca de ícones -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <symbol id="i-chat" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" d="M12 3.5a8.5 8.5 0 0 0-7.4 12.7L3.5 20.5l4.4-1.1A8.5 8.5 0 1 0 12 3.5Z"/><path fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" d="M8.6 10.2h6.8M8.6 13.6h4.4"/></symbol>
+  <symbol id="i-trofeu" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M7.5 3.8h9v5.4a4.5 4.5 0 0 1-9 0V3.8Z"/><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M7.5 5.6H4.6v1.2A3.3 3.3 0 0 0 7.9 10M16.5 5.6h2.9v1.2A3.3 3.3 0 0 1 16.1 10M12 13.7v3.4M8.4 20.2h7.2M9.6 17.1h4.8v3.1H9.6z"/></symbol>
+  <symbol id="i-certificado" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M4 4.5h16v11H4z"/><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M7.5 8.2h9M7.5 11.2h5"/><circle cx="16" cy="15.5" r="2.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="m14.6 17.4-.8 3.6 2.2-1.2 2.2 1.2-.8-3.6"/></symbol>
+  <symbol id="i-relogio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.4" fill="none" stroke="currentColor" stroke-width="1.6"/><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M12 7.4V12l3 2"/></symbol>
+  <symbol id="i-suporte" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M12 20.3s-7.4-4.4-7.4-9.9A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7.4 2.4c0 5.5-7.4 9.9-7.4 9.9Z"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></symbol>
   <symbol id="i-star" viewBox="0 0 24 24"><path fill="currentColor" d="m12 2.8 2.8 6 6.4.6-4.8 4.3 1.4 6.4L12 16.8l-5.8 3.3 1.4-6.4-4.8-4.3 6.4-.6Z"/></symbol>
   <symbol id="i-spray" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" d="M8.5 8.5h6.2a1.5 1.5 0 0 1 1.5 1.5v10a1.5 1.5 0 0 1-1.5 1.5H8.5A1.5 1.5 0 0 1 7 20V10a1.5 1.5 0 0 1 1.5-1.5Z"/><path fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M9.6 8.5V6.2A1.7 1.7 0 0 1 11.3 4.5h1.6"/><circle cx="19" cy="4" r="1.1" fill="currentColor"/><circle cx="21.4" cy="7.2" r="1.1" fill="currentColor"/><circle cx="18.4" cy="9.6" r=".9" fill="currentColor"/><path fill="none" stroke="currentColor" stroke-width="1.4" d="M9.9 12.4h3.6"/></symbol>
   <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.3" fill="none" stroke="currentColor" stroke-width="1.6"/><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M12 2.4v2.4M12 19.2v2.4M2.4 12h2.4M19.2 12h2.4M5.2 5.2l1.7 1.7M17.1 17.1l1.7 1.7M18.8 5.2l-1.7 1.7M6.9 17.1l-1.7 1.7"/></symbol>
@@ -518,6 +853,7 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
       <a href="#servicos">Serviços</a>
       <a href="#como-funciona">Como funciona</a>
       <a href="#resultados">Avaliações</a>
+      <a href="#cursos">Cursos</a>
       <a href="#duvidas">Dúvidas</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -546,9 +882,10 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
   <div class="wrap">
     <div>
-      <span class="sig">Bronzeamento by Santo Bronze · Lavras MG</span>
-      <h1 class="display hero-title" id="t-hero">Bronze<br><em class="it">natural</em><span class="script" aria-hidden="true">glow</span></h1>
-      <p class="lead">Especialista em bronzeamento natural e a jato, com um protocolo pensado para a sua pele e para o seu momento. Mais de 5000 mulheres já passaram por aqui.</p>
+      <p class="hero-premio"><svg aria-hidden="true" focusable="false"><use href="#i-trofeu"/></svg><span><b>1º lugar</b> no Sales Pesquisa · <b>3 anos consecutivos</b></span></p>
+      <span class="sig">Bronzeamento natural e artificial · Lavras MG</span>
+      <h1 class="display hero-title" id="t-hero">Santo<br><em class="it">Bronze</em><span class="script" aria-hidden="true">glow</span></h1>
+      <p class="lead">Especialista em bronzeamento, com um protocolo pensado para a sua pele e para o seu momento. Mais de 5.000 mulheres já passaram por aqui.</p>
       <div class="hero-actions">
         <a class="btn mel" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20agendar%20meu%20bronze." target="_blank" rel="noopener" data-cta="hero">
           <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg>Agendar meu bronze pelo WhatsApp
@@ -559,59 +896,82 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     </div>
 
     <div class="hero-assinatura">
-      <div aria-hidden="true">Na<br>tu<br>ral<small>é quando o bronze parece ter nascido com você.</small></div>
-      <p class="vis-oculto">Natural é quando o bronze parece ter nascido com você.</p>
+      <div aria-hidden="true"><em>Brilho</em><small>é quando o bronze parece ter nascido com você.</small></div>
+      <p class="vis-oculto">Brilho é quando o bronze parece ter nascido com você.</p>
     </div>
   </div>
 
   <div class="faixa-prova">
-    <div class="wrap" style="padding:0">
+    <div class="wrap">
       <ul>
         <li><b><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><span data-conta="4,9">4,9</span></b><span>Nota no Google</span></li>
         <li><b><span data-conta="79">79</span></b><span>Avaliações de clientes</span></li>
-        <li><b>+ <span data-conta="5000">5000</span></b><span>Mulheres atendidas</span></li>
-        <li><b>1º lugar</b><span>Sales Pesquisa 2026, categoria Bronzeamento</span></li>
+        <li><b>+ <span data-conta="5000">5.000</span></b><span>Mulheres atendidas</span></li>
+        <li><b>1º lugar</b><span>Sales Pesquisa, categoria Bronzeamento, por 3 anos consecutivos</span></li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- ============ 2. MANIFESTO ============ -->
+<!-- ============ 2. MANIFESTO — o bronze vem de dentro para fora ============ -->
 <section class="bloco alt" id="manifesto" aria-labelledby="t-manifesto">
   <div class="wrap">
     <div class="sec-head rev">
       <div>
         <span class="sig">O que guia o trabalho</span>
-        <h2 class="h1" id="t-manifesto">Cada pele<br>carrega um<br><em class="it">momento</em></h2>
+        <h2 class="h1" id="t-manifesto">O bronze vem<br>de dentro<br>para <em class="it">fora</em></h2>
       </div>
-      <p class="lead muted">Um casamento, uma viagem, um ensaio, a primeira vez. Antes de escolher o tom, a gente entende a pele que vai receber a cor — e o dia que ela precisa atravessar.</p>
+      <p class="lead muted">Seu bronze começa muito antes do sol tocar sua pele. A melanina é o pigmento que dá cor à pele, e cada pessoa produz uma quantidade diferente — por isso o bronze nunca fica igual para todo mundo.</p>
     </div>
 
     <div class="manifesto-grid">
       <div class="manifesto-texto rev">
-        <p><strong>Qual bronze pega mais? Não existe uma resposta única.</strong> Tipo de pele, hidratação, cuidados antes e depois, frequência das sessões e a exposição ao sol no dia a dia mudam o resultado — seja no bronze natural, seja no bronze a jato.</p>
-        <p>Por isso nada aqui é feito no automático. Não existe resultado padrão: existe personalização. A avaliação vem antes da sessão, o preparo vem antes do dia, e o pós-bronze é explicado com a mesma atenção — porque é ele que faz a cor durar.</p>
-        <p>É esse cuidado que aparece nas avaliações: <strong>resultado</strong>, <strong>autoestima</strong> e <strong>ambiente</strong> são as três palavras que mais se repetem quando as clientes falam do Santo Bronze.</p>
-        <p class="destaque">Transformando autoestima — uma pele de cada vez.</p>
+        <p><strong>Qual bronze pega mais? Não existe uma resposta única.</strong> Seu fototipo, a hidratação, os cuidados antes e depois, a frequência das sessões e a exposição ao sol no dia a dia mudam o resultado — seja no bronze natural, seja no artificial.</p>
+        <p>Por isso nada aqui é feito no automático. Antes de qualquer sessão, a Diana avalia a sua pele e entende como ela reage ao sol. Não existe resultado padrão: existe personalização.</p>
+
+        <div class="equilibrio">
+          <div>
+            <h3>O que ajuda o bronze</h3>
+            <ul>
+              <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><strong>Alimentação:</strong> alimentos ricos em betacaroteno, como cenoura, mamão e abóbora, ajudam a pele a pigmentar melhor.</span></li>
+              <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><strong>Hidratação por dentro e por fora:</strong> pele seca não fixa o bronze, mancha e descama mais rápido.</span></li>
+            </ul>
+          </div>
+          <div class="atrapalha">
+            <h3>O que atrapalha</h3>
+            <ul>
+              <li><svg aria-hidden="true" focusable="false"><use href="#i-x"/></svg><span><strong>Certos medicamentos</strong> podem causar manchas.</span></li>
+              <li><svg aria-hidden="true" focusable="false"><use href="#i-x"/></svg><span><strong>Cigarro</strong> deixa o bronze opaco; <strong>álcool</strong> desidrata e dificulta a pigmentação.</span></li>
+              <li><svg aria-hidden="true" focusable="false"><use href="#i-x"/></svg><span><strong>Excesso de sol:</strong> com a pele já muito pigmentada, os melanócitos “cansam” e o bronze pega com mais dificuldade.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="destaque">O bronze bonito e uniforme vem do equilíbrio.</p>
       </div>
 
-      <!-- GRÁFICO: escala de tons interativa -->
+      <!-- GRÁFICO: escala de fototipos (Fitzpatrick) interativa -->
       <div class="tons rev d1">
-        <h3 class="h4">A escala de tons do bronze a jato</h3>
-        <p class="small">Toque em um tom para ver como ele é construído. No jato, a cor sobe em camadas: quanto mais camadas, mais profundo o bronze.</p>
-        <div class="tons-barra" id="tonsBarra" role="group" aria-label="Escala de tons de bronzeamento, do mais leve ao mais profundo">
-          <button type="button" style="background:#EFD3B0" aria-pressed="false" aria-label="Tom 1: Glow discreto"><span class="num" aria-hidden="true">1</span></button>
-          <button type="button" style="background:#E0B383" aria-pressed="false" aria-label="Tom 2: Dourado suave"><span class="num" aria-hidden="true">2</span></button>
-          <button type="button" style="background:#C98552" aria-pressed="true" aria-label="Tom 3: Mel dourado"><span class="num" aria-hidden="true">3</span></button>
-          <button type="button" style="background:#A55F2E" aria-pressed="false" aria-label="Tom 4: Bronze quente"><span class="num" aria-hidden="true">4</span></button>
-          <button type="button" style="background:#7A3A17" aria-pressed="false" aria-label="Tom 5: Bronze profundo"><span class="num" aria-hidden="true">5</span></button>
+        <h3 class="h4">Qual é o seu fototipo?</h3>
+        <p class="small">Os fototipos mostram como cada pele reage ao sol, conforme a quantidade de melanina que ela produz. Toque no tom mais parecido com o seu para entender o que esperar do bronze.</p>
+        <div class="tons-barra" id="tonsBarra" role="group" aria-label="Escala de fototipos de pele, do I (menos melanina) ao VI (mais melanina)">
+          <button type="button" style="background:#F3DCC4" aria-pressed="false" aria-label="Fototipo I: pele muito clara"><span class="num" aria-hidden="true">I</span></button>
+          <button type="button" style="background:#E6C09A" aria-pressed="false" aria-label="Fototipo II: pele clara"><span class="num" aria-hidden="true">II</span></button>
+          <button type="button" style="background:#CD9C72" aria-pressed="true" aria-label="Fototipo III: pele morena clara"><span class="num" aria-hidden="true">III</span></button>
+          <button type="button" style="background:#A9744A" aria-pressed="false" aria-label="Fototipo IV: pele morena"><span class="num" aria-hidden="true">IV</span></button>
+          <button type="button" class="escuro" style="background:#7A4F32" aria-pressed="false" aria-label="Fototipo V: pele morena escura"><span class="num" aria-hidden="true">V</span></button>
+          <button type="button" class="escuro" style="background:#48301F" aria-pressed="false" aria-label="Fototipo VI: pele negra"><span class="num" aria-hidden="true">VI</span></button>
         </div>
-        <div class="tons-legenda" aria-hidden="true"><span>1 camada</span><span>5 camadas</span></div>
+        <div class="tons-legenda" aria-hidden="true"><span>Menos melanina</span><span>Mais melanina</span></div>
         <div class="tons-info" id="tonsInfo" role="status" aria-live="polite">
-          <b>Mel dourado</b>
-          <p>Intermediário e caloroso, o mais pedido para eventos e ensaios fotográficos.</p>
-          <p class="quem"><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Casamentos, formaturas e ensaios</p>
+          <b>Fototipo III · Pele morena clara</b>
+          <p>Tom intermediário, que ganha cor aos poucos.</p>
+          <dl>
+            <div><svg aria-hidden="true" focusable="false"><use href="#i-sun"/></svg><dt>Com o sol</dt><dd>Queima moderadamente e bronzeia de forma gradual.</dd></div>
+            <div><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg><dt>No bronze</dt><dd>Responde bem ao bronze construído sessão a sessão, sempre com a pele hidratada.</dd></div>
+          </dl>
         </div>
+        <p class="tons-aviso">A escala é um ponto de partida, não um diagnóstico. O seu fototipo e o tipo de bronze mais seguro para você são definidos na avaliação, antes de qualquer sessão.</p>
       </div>
     </div>
   </div>
@@ -625,7 +985,7 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <span class="sig">O que fazemos</span>
         <h2 class="h1" id="t-servicos">Serviços</h2>
       </div>
-      <p class="lead muted">Atendimento para quem quer o bronze — e formação para quem quer viver dele. Tudo com a mesma técnica que já atendeu mais de 5000 mulheres.</p>
+      <p class="lead muted">Do preparo da pele ao bronze pronto: tudo o que o seu glow precisa, com a mesma técnica que já atendeu mais de 5.000 mulheres.</p>
     </div>
 
     <div class="cards-serv">
@@ -635,8 +995,8 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
                alt="Pele bronzeada com a marquinha do biquíni bem definida, ao lado de um frasco do produto Blow Girl.">
         </figure>
         <div class="corpo">
-          <h3 class="h3">Bronzeamento natural e a jato</h3>
-          <p>Natural, com a marquinha desenhada pelo biquíni de fita, ou a jato, com a cor construída em camadas e sem depender do sol. O caminho certo sai da avaliação da sua pele.</p>
+          <h3 class="h3">Bronzeamento natural e artificial</h3>
+          <p>Natural, com a marquinha desenhada pelo biquíni de fita, ou artificial, a jato, com a cor construída em camadas e sem depender do sol. O caminho certo sai da avaliação da sua pele.</p>
           <ul>
             <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Biquíni de fita montado sob medida</li>
             <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Bronze a jato para quem não pode ou não quer sol</li>
@@ -649,46 +1009,46 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
       <article class="card-serv rev d1">
         <figure class="img-4x5">
-          <img src="assets/servico-curso-alunas.jpg" width="800" height="1000" loading="lazy" decoding="async"
-               alt="Diana Alice ao ar livre entre duas alunas que seguram seus certificados do curso de bronzeamento.">
+          <img src="assets/servico-banho-de-lua.jpg" width="800" height="1000" loading="lazy" decoding="async"
+               alt="Pernas bronzeadas e lisas sob a sombra de folhas de palmeira, com óculos escuros apoiados na coxa.">
         </figure>
         <div class="corpo">
-          <h3 class="h3">Curso de bronzeamento</h3>
-          <p>Do zero ao profissional, em um curso 3 em 1 100% presencial, com aula teórica e prática. Para quem quer entrar na área com técnica de verdade.</p>
+          <h3 class="h3">Banho de lua</h3>
+          <p>Os pelinhos do corpo ficam dourados e quase invisíveis, e a pele ganha um acabamento uniforme e iluminado. Fica lindo sozinho — e ainda mais bonito junto com o bronze.</p>
           <ul>
-            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Fototipos de pele e radiação com segurança</li>
-            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Montagem de biquíni, banho de lua, produtos e fornecedores</li>
-            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Gestão para lotar sua agenda e suporte vitalício</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Descoloração dos pelos do corpo</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Esfoliação e hidratação da pele</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Combina com o bronze natural ou artificial</li>
           </ul>
-          <div class="preco"><b>3 certificados</b><span>Vagas limitadas</span></div>
-          <a class="link-ed" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Quero%20saber%20sobre%20o%20curso%20de%20bronzeamento." target="_blank" rel="noopener" data-cta="servico-curso">Quero saber do curso</a>
+          <div class="preco"><b>Valores pelo WhatsApp</b><span>Com hora marcada</span></div>
+          <a class="link-ed" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Quero%20agendar%20um%20banho%20de%20lua." target="_blank" rel="noopener" data-cta="servico-banho-de-lua">Quero um banho de lua</a>
         </div>
       </article>
 
       <article class="card-serv rev d2">
         <figure class="img-4x5">
-          <img src="assets/servico-mentoria-diana.jpg" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 20%"
-               alt="Retrato de Diana Alice, de cabelo ruivo e blazer branco, com a mão apoiada no queixo.">
+          <img src="assets/servico-esfoliacao.jpg" width="800" height="1000" loading="lazy" decoding="async"
+               alt="Mão com unhas claras espalhando esfoliante dourado de grânulos sobre a pele bronzeada.">
         </figure>
         <div class="corpo">
-          <h3 class="h3">Mentoria</h3>
-          <p>Para profissionais comprometidas com crescimento, que já entenderam que não é falta de talento e querem parar de tentar sozinhas.</p>
+          <h3 class="h3">Esfoliação corporal</h3>
+          <p>Tira as células mortas e deixa a pele lisa e pronta para receber a cor. É o que faz o bronze pegar por igual e durar mais.</p>
           <ul>
-            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Direção, estratégia e clareza</li>
-            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Posicionamento e mentalidade</li>
-            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Sair da estagnação e crescer de forma profissional</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Remove células mortas e aspereza</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Uniformiza a pele antes do bronze</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Sozinha ou antes da sua sessão</li>
           </ul>
-          <div class="preco"><b>Vagas pelo WhatsApp</b><span>Individual</span></div>
-          <a class="link-ed" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Quero%20saber%20sobre%20a%20mentoria." target="_blank" rel="noopener" data-cta="servico-mentoria">Quero saber da mentoria</a>
+          <div class="preco"><b>Valores pelo WhatsApp</b><span>Com hora marcada</span></div>
+          <a class="link-ed" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Quero%20agendar%20uma%20esfolia%C3%A7%C3%A3o%20corporal." target="_blank" rel="noopener" data-cta="servico-esfoliacao">Quero agendar uma esfoliação</a>
         </div>
       </article>
     </div>
 
     <div class="selos rev">
       <span class="selo">Protocolo individual</span>
-      <span class="selo">1º lugar Sales Pesquisa 2026</span>
+      <span class="selo">1º lugar Sales Pesquisa · 3 anos consecutivos</span>
       <span class="selo">Nota 4,9 no Google</span>
-      <span class="selo escuro">+ de 5000 mulheres atendidas</span>
+      <span class="selo escuro">+ de 5.000 mulheres atendidas</span>
       <span class="selo escuro">Empresa de empreendedoras</span>
     </div>
 
@@ -703,7 +1063,7 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
 <!-- ============ 4. COMO FUNCIONA ============ -->
 <section class="bloco alt com-fundo fundo-escuro" id="como-funciona" aria-labelledby="t-como">
-  <figure class="fundo-foto" aria-hidden="true"><img src="assets/fundo-como-funciona-esfoliacao.jpg" width="1600" height="893" alt="" style="object-position:72% 50%" loading="lazy" decoding="async"></figure>
+  <figure class="fundo-foto" aria-hidden="true"><img src="assets/fundo-como-funciona-pele-sol.jpg" width="1600" height="893" alt="" loading="lazy" decoding="async"></figure>
   <div class="wrap">
     <div class="sec-head rev">
       <div>
@@ -716,7 +1076,7 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <div class="etapas-grid">
       <div class="etapas rev">
         <ol>
-          <li><div><b>Avaliação da pele</b><p>Tom, subtom e histórico, como melasma ou sensibilidade.</p></div></li>
+          <li><div><b>Avaliação da pele</b><p>Fototipo, tom, subtom e histórico, como melasma ou sensibilidade.</p></div></li>
           <li><div><b>Preparo</b><p>Orientações de esfoliação e hidratação antes do dia.</p></div></li>
           <li><div><b>Aplicação</b><p>Protocolo individual, com a cor construída em camadas.</p></div></li>
           <li><div><b>Pós-bronze</b><p>Primeiro banho, cuidados e como fazer o bronze durar.</p></div></li>
@@ -815,7 +1175,6 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <article class="dep rev d1">
           <blockquote>“Eu amei tudo. Atendimento excelente, cuidado e carinho dês primeiro momento, estão parabéns. Sem conta que o bronze fica muito lindo pega muito bem.”</blockquote>
           <p class="quem"><b>Cleide Silva</b>
-            <span class="estrelas" role="img" aria-label="Cinco estrelas"><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg></span>
             <span>Avaliação no Google</span>
           </p>
         </article>
@@ -823,7 +1182,6 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <article class="dep rev d1">
           <blockquote>“Foi uma experiência incrível, nunca tinha feito bronzeamento e amei o resultado, o atendimento da Diana e das outras meninas foi excelente, me senti muito a vontade. Super recomendo!”</blockquote>
           <p class="quem"><b>Valeria Rosa</b>
-            <span class="estrelas" role="img" aria-label="Cinco estrelas"><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg></span>
             <span>Avaliação no Google</span>
           </p>
         </article>
@@ -831,7 +1189,6 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <article class="dep rev d2">
           <blockquote>“Excelente atendimento... Diana é um amor... Muito educada e o trabalho que ela faz é excelente... Eu recomendo pra todos...”</blockquote>
           <p class="quem"><b>Elaine Silva</b>
-            <span class="estrelas" role="img" aria-label="Cinco estrelas"><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg></span>
             <span>Avaliação no Google</span>
           </p>
         </article>
@@ -843,33 +1200,44 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
       <p>“Ótimo lugar, boa localização.”</p>
     </div>
 
-    <!-- Galeria: fotos reais do Instagram @santobronzeoficial -->
+    <!-- Galeria: resultados de clientes do Santo Bronze (Site/Resultados Reais) -->
     <div class="galeria-head rev">
       <h3 class="h3">Resultados <em class="it">reais</em></h3>
-      <p>Clientes e bastidores, direto do Instagram do Santo Bronze.</p>
+      <p>A marquinha e a cor de clientes do Santo Bronze.</p>
     </div>
     <ul class="galeria rev">
       <li><figure>
-        <div class="img-4x5"><img src="assets/resultado-diana-e-cliente.jpg" width="700" height="875" loading="lazy" decoding="async"
-             alt="Diana Alice sorrindo ao lado de uma cliente de pele bronzeada, que usa biquíni de fita."></div>
-        <figcaption>A melhor parte: o sorriso de quem sai</figcaption>
+        <div class="img-4x5"><img src="assets/resultado-real-1.jpg" width="700" height="875" loading="lazy" decoding="async"
+             alt="Costas e quadril de uma cliente com bronze uniforme e a marquinha fina do biquíni de fita rosa."></div>
+        <figcaption>Marquinha fina e cor por igual</figcaption>
       </figure></li>
       <li><figure>
-        <div class="img-4x5"><img src="assets/resultado-marquinha-cliente.jpg" width="700" height="875" loading="lazy" decoding="async"
-             alt="Cliente sorridente com o bronze uniforme e a marquinha fina do biquíni de fita."></div>
-        <figcaption>Marquinha desenhada e cor por igual</figcaption>
+        <div class="img-4x5"><img src="assets/resultado-real-2.jpg" width="700" height="875" loading="lazy" decoding="async"
+             alt="Cliente sorrindo, de cabelo escuro, com biquíni de fita preta e marquinhas bem desenhadas no corpo bronzeado."></div>
+        <figcaption>Biquíni de fita, marquinha desenhada</figcaption>
       </figure></li>
       <li><figure>
-        <div class="img-4x5"><img src="assets/aplicacao-biquini-de-fita.jpg" width="700" height="875" loading="lazy" decoding="async"
-             alt="Mãos de unhas vermelhas recortando com tesoura a fita adesiva de um biquíni de fita durante a montagem."></div>
-        <figcaption>Montagem do biquíni de fita, sob medida</figcaption>
+        <div class="img-4x5"><img src="assets/resultado-real-3.jpg" width="700" height="875" loading="lazy" decoding="async"
+             alt="Barriga bronzeada de uma cliente de calça escura e blusa amarrada, com as linhas claras da marquinha no quadril."></div>
+        <figcaption>A marquinha que aparece no dia a dia</figcaption>
       </figure></li>
       <li><figure>
-        <div class="img-4x5"><img src="assets/resultado-colo-marquinha.jpg" width="1000" height="1250" loading="lazy" decoding="async" style="object-position:50% 30%"
-             alt="Colo de uma cliente com pele bronzeada em luz dourada, mostrando a marquinha fina deixada pelo biquíni de fita."></div>
-        <figcaption>A marquinha no colo, de perto</figcaption>
+        <div class="img-4x5"><img src="assets/resultado-real-4.jpg" width="700" height="875" loading="lazy" decoding="async"
+             alt="Costas bronzeadas de uma cliente com gotas de água, uma tatuagem na coluna e a marquinha fina do biquíni."></div>
+        <figcaption>Bronze uniforme, das costas ao quadril</figcaption>
+      </figure></li>
+      <li><figure>
+        <div class="img-4x5"><img src="assets/resultado-real-5.jpg" width="700" height="875" loading="lazy" decoding="async"
+             alt="Colo bronzeado e molhado, com gotas de água, biquíni de fita laranja e a linha clara da alça."></div>
+        <figcaption>Dourado que brilha com a água</figcaption>
+      </figure></li>
+      <li><figure>
+        <div class="img-4x5"><img src="assets/resultado-real-6.jpg" width="700" height="875" loading="lazy" decoding="async"
+             alt="Colo bronzeado de uma cliente com biquíni de fita branca e preta e a marquinha das alças bem marcada."></div>
+        <figcaption>Marquinha de fita no colo</figcaption>
       </figure></li>
     </ul>
+
 
     <!-- Prêmio -->
     <div class="premio rev">
@@ -879,9 +1247,9 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
       </figure>
       <div class="txt">
         <span class="sig">Melhores do ano · Lavras MG</span>
-        <p class="num" aria-hidden="true">1º</p>
-        <h3><span class="vis-oculto">1º </span>lugar no <em>Sales Pesquisa 2026</em>, categoria Bronzeamento</h3>
-        <p>Uma pesquisa de opinião pública em que a própria cidade escolhe os profissionais que mais se destacaram no ano. E não foi a primeira vez: o Santo Bronze recebeu mais uma vez o reconhecimento de Melhores do Ano.</p>
+        <p class="num" aria-hidden="true">3 anos</p>
+        <h3><span class="vis-oculto">3 anos </span>consecutivos em <em>1º lugar</em> no Sales Pesquisa, categoria Bronzeamento</h3>
+        <p>Uma pesquisa de opinião pública em que a própria cidade escolhe os profissionais que mais se destacaram no ano. O Santo Bronze ficou em primeiro lugar na categoria Bronzeamento por três anos consecutivos — o mais recente, em 2026.</p>
       </div>
     </div>
 
@@ -915,8 +1283,8 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
         <p class="small muted" style="margin-top:8px;padding-left:22px">— Diana Alice</p>
 
         <div class="numeros">
-          <div><b>+ 5000</b><span>Mulheres atendidas</span></div>
-          <div><b>1º lugar</b><span>Sales Pesquisa 2026, Bronzeamento</span></div>
+          <div><b>+ 5.000</b><span>Mulheres atendidas</span></div>
+          <div><b>1º lugar</b><span>Sales Pesquisa, 3 anos consecutivos</span></div>
           <div><b>4,9</b><span>Nota média no Google</span></div>
           <div><b>79</b><span>Avaliações públicas</span></div>
         </div>
@@ -930,7 +1298,93 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   </div>
 </section>
 
-<!-- ============ 7. DÚVIDAS ============ -->
+<!-- ============ 7. CURSOS (para profissionais) ============ -->
+<section class="bloco cursos" id="cursos" aria-labelledby="t-cursos">
+  <svg class="folha palma" viewBox="-20 -160 460 320" aria-hidden="true" focusable="false"></svg>
+  <div class="wrap">
+    <div class="sec-head rev">
+      <div>
+        <span class="sig">Para profissionais</span>
+        <h2 class="h1" id="t-cursos">Aprenda a<br>viver do <span class="script">bronze</span></h2>
+      </div>
+      <p class="lead">Formação presencial com a Diana Alice, referência em bronzeamento natural e artificial e 3 anos consecutivos em 1º lugar no Sales Pesquisa. Para quem está começando do zero e para quem já atua e quer crescer.</p>
+    </div>
+
+    <div class="cursos-lista">
+      <!-- Curso -->
+      <article class="curso-card rev" aria-labelledby="t-curso">
+        <figure class="img-4x5">
+          <img src="assets/servico-curso-alunas.jpg" width="800" height="1000" loading="lazy" decoding="async"
+               alt="Diana Alice ao ar livre entre duas alunas que seguram seus certificados do curso de bronzeamento.">
+        </figure>
+        <div class="curso-corpo">
+          <span class="curso-tag">Curso 3 em 1 · Do zero ao profissional</span>
+          <h3 id="t-curso">Curso de bronzeamento</h3>
+          <p>Aula teórica e prática, 100% presencial, para quem quer entrar na área com técnica de verdade — mesmo que esteja começando do zero.</p>
+
+          <h4>O que você vai aprender</h4>
+          <ul class="curso-itens">
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Aula teórica e prática</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Montagem de biquíni perfeita</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Fototipos de pele, sem erro</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Radiação com segurança</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Produtos e fornecedores</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Banho de lua</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Gestão para lotar sua agenda</li>
+          </ul>
+
+          <div class="curso-bonus">
+            <span class="sig">Bônus</span>
+            <span class="selo">Curso de Bronze a Jato</span>
+            <span class="selo">Banho de Lua Gourmet</span>
+          </div>
+
+          <ul class="curso-dif">
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-certificado"/></svg><b>3 certificados</b>inclusos</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-pin"/></svg><b>100% presencial</b>em Lavras</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-suporte"/></svg><b>Suporte vitalício</b>depois do curso</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-relogio"/></svg><b>Vagas limitadas</b>por turma</li>
+          </ul>
+
+          <div class="curso-acoes">
+            <a class="btn mel" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Quero%20saber%20das%20pr%C3%B3ximas%20turmas%20do%20curso%20de%20bronzeamento." target="_blank" rel="noopener" data-cta="curso">
+              <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg>Quero saber das próximas turmas
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Mentoria -->
+      <article class="curso-card invertido rev d1" aria-labelledby="t-mentoria">
+        <figure class="img-4x5">
+          <img src="assets/servico-mentoria-diana.jpg" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 20%"
+               alt="Retrato de Diana Alice, de cabelo ruivo e blazer branco, com a mão apoiada no queixo.">
+        </figure>
+        <div class="curso-corpo">
+          <span class="curso-tag">Individual · Para quem já atua</span>
+          <h3 id="t-mentoria">Mentoria</h3>
+          <p class="curso-frase">Mentoria não é pra todo mundo. É pra quem está comprometida com crescimento.</p>
+          <p>O que muda o jogo é posicionamento, estratégia e mentalidade. Na mentoria, a Diana acompanha você de perto para parar de tentar sozinha.</p>
+
+          <h4>É pra você que</h4>
+          <ul class="curso-itens">
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Já entendeu que não é falta de talento</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Quer direção, estratégia e clareza</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Quer sair da estagnação</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Quer crescer de forma profissional</li>
+          </ul>
+
+          <div class="curso-acoes">
+            <a class="btn sec claro" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Quero%20saber%20sobre%20a%20mentoria." target="_blank" rel="noopener" data-cta="mentoria">Quero saber da mentoria</a>
+            <p class="micro"><span class="dot" aria-hidden="true"></span>Resposta rápida, sem compromisso</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. DÚVIDAS ============ -->
 <section class="bloco" id="duvidas" aria-labelledby="t-duvidas">
   <div class="wrap">
     <div class="sec-head rev">
@@ -1119,7 +1573,7 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <div class="wrap">
     <span class="sig">Santo Bronze</span>
     <h2 class="h1" id="t-tom">Transformando <span class="script">autoestima</span></h2>
-    <p class="lead">Mais de 5000 mulheres já saíram daqui com a cor certa e com outra postura diante do espelho. O próximo horário pode ser o seu.</p>
+    <p class="lead">Mais de 5.000 mulheres já saíram daqui com a cor certa e com outra postura diante do espelho. O próximo horário pode ser o seu.</p>
     <div class="cta-dupla">
       <a class="btn mel" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20agendar%20meu%20bronze." target="_blank" rel="noopener" data-cta="fechamento">
         <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg>Garanta seu momento
@@ -1247,15 +1701,17 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   }
   Array.prototype.forEach.call(document.querySelectorAll('svg.palma'), function(el){ el.innerHTML = palma(); });
 
-  /* ---------- Gráfico: escala de tons ---------- */
-  var TONS = [
-    ['#EFD3B0','Glow discreto','Um dourado leve, quase um brilho. Para quem quer parecer que voltou de férias sem ninguém perceber o porquê.','Primeira vez e peles muito claras'],
-    ['#E0B383','Dourado suave','O tom do dia a dia: aquece a pele, uniformiza e some sem deixar marca quando sai.','Rotina, trabalho e fotos de perto'],
-    ['#C98552','Mel dourado','Intermediário e caloroso, o mais pedido para eventos e ensaios fotográficos.','Casamentos, formaturas e ensaios'],
-    ['#A55F2E','Bronze quente','Cor cheia, construída em mais camadas, que segura bem sob luz forte e sob maquiagem.','Verão, praia e vestido claro'],
-    ['#7A3A17','Bronze profundo','A cor mais intensa, feita em camadas, indicada para peles que já têm base dourada.','Peles com base morena']
+  /* ---------- Gráfico: escala de fototipos (Fitzpatrick) ----------
+     [nome, perfil, com o sol, no bronze] — textos revisar com a Diana */
+  var FOTOTIPOS = [
+    ['Fototipo I · Pele muito clara', 'Costuma ter sardas, cabelo ruivo ou loiro e olhos claros.', 'Sempre queima e quase não bronzeia.', 'Pede cautela máxima com o sol. Para esta pele, o bronze artificial, a jato, costuma ser o caminho mais seguro.'],
+    ['Fototipo II · Pele clara', 'Pele sensível, com pouca melanina natural.', 'Queima com facilidade e bronzeia pouco.', 'Exposição curta e gradual, com hidratação reforçada. O jato ajuda a chegar no tom sem forçar a pele.'],
+    ['Fototipo III · Pele morena clara', 'Tom intermediário, que ganha cor aos poucos.', 'Queima moderadamente e bronzeia de forma gradual.', 'Responde bem ao bronze construído sessão a sessão, sempre com a pele hidratada.'],
+    ['Fototipo IV · Pele morena', 'Tom dourado, que escurece com facilidade.', 'Queima pouco e bronzeia com facilidade.', 'Pega cor rápido. O cuidado é não exagerar: excesso de sol mancha e “cansa” os melanócitos.'],
+    ['Fototipo V · Pele morena escura', 'Pele com bastante melanina natural.', 'Raramente queima e bronzeia bastante.', 'O foco é realce e uniformidade: hidratação e marquinha bem desenhada fazem toda a diferença.'],
+    ['Fototipo VI · Pele negra', 'Pele profundamente pigmentada.', 'Dificilmente queima.', 'O bronze aparece como brilho e marquinha. Hidratação e proteção continuam essenciais.']
   ];
-  /* Os 5 botões já existem no HTML: o script só liga a interação. */
+  /* Os 6 botões já existem no HTML: o script só liga a interação. */
   var barra = document.getElementById('tonsBarra'), info = document.getElementById('tonsInfo');
   if(barra && info){
     var botoes = barra.querySelectorAll('button');
@@ -1263,9 +1719,10 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
       b.addEventListener('click', function(){
         Array.prototype.forEach.call(botoes, function(x){ x.setAttribute('aria-pressed','false'); });
         b.setAttribute('aria-pressed','true');
-        var t = TONS[i];
-        info.innerHTML = '<b>' + t[1] + '</b><p>' + t[2] + '</p>' +
-          '<p class="quem"><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>' + t[3] + '</p>';
+        var f = FOTOTIPOS[i];
+        info.innerHTML = '<b>' + f[0] + '</b><p>' + f[1] + '</p><dl>' +
+          '<div><svg aria-hidden="true" focusable="false"><use href="#i-sun"/></svg><dt>Com o sol</dt><dd>' + f[2] + '</dd></div>' +
+          '<div><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg><dt>No bronze</dt><dd>' + f[3] + '</dd></div></dl>';
       });
     });
   }
@@ -1291,7 +1748,7 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   function contar(el){
     var alvo = el.dataset.conta, decimal = alvo.indexOf(',') > -1;
     var fim = parseFloat(alvo.replace(',', '.'));
-    if(reduzido){ el.textContent = alvo; return; }
+    if(reduzido){ el.textContent = decimal ? alvo : Number(alvo).toLocaleString('pt-BR'); return; }
     var ini = performance.now(), dur = 1200;
     function passo(t){
       var p = Math.min((t - ini)/dur, 1), e = 1 - Math.pow(1 - p, 3), v = fim*e;
@@ -1324,8 +1781,15 @@ footer .base{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     }, 4000);
   }else{
     Array.prototype.forEach.call(document.querySelectorAll('.rev'), function(el){ el.classList.add('on'); });
-    Array.prototype.forEach.call(document.querySelectorAll('[data-conta]'), function(n){ n.textContent = n.dataset.conta; });
+    Array.prototype.forEach.call(document.querySelectorAll('[data-conta]'), function(n){ var a = n.dataset.conta; n.textContent = a.indexOf(',') > -1 ? a : Number(a).toLocaleString('pt-BR'); });
     animarBarras();
+  }
+
+  /* ---------- Topo: sombra discreta depois que a página rola ---------- */
+  var topo = document.querySelector('.topbar');
+  if(topo){
+    var marcarTopo = function(){ topo.classList.toggle('rolou', window.scrollY > 8); };
+    window.addEventListener('scroll', marcarTopo, { passive: true }); marcarTopo();
   }
 
   /* ---------- Rolagem suave para âncoras internas ---------- */
