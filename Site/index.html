@@ -443,11 +443,6 @@ section.bloco.cursos{background:var(--espresso);color:var(--champanhe);position:
   .curso-card .img-4x5{aspect-ratio:4/3;min-height:0}
   .curso-corpo{padding:32px 24px}
 }
-/* Variante "capa": card com imagem já pronta (título, texto e CTA desenhados nela) */
-.curso-card.capa{grid-template-columns:1fr}
-.curso-card.capa img{display:block;width:100%;height:auto}
-.curso-card.capa .curso-corpo{padding:28px 44px 40px;align-items:center;text-align:center}
-@media (max-width:860px){.curso-card.capa .curso-corpo{padding:24px}}
 @media (max-width:520px){.curso-itens{grid-template-columns:1fr}}
 
 /* ---------- Dúvidas ---------- */
@@ -1506,10 +1501,40 @@ footer{border-top:1px solid var(--linha-escura)}
 
     <div class="cursos-lista">
       <!-- Curso -->
-      <article class="curso-card capa rev" aria-label="Curso de bronzeamento artificial">
-        <img src="assets/capa-curso-bronzeamento-artificial.png" width="1672" height="941" loading="lazy" decoding="async"
-             alt="Santo Bronze apresenta: Curso de Bronzeamento Artificial. Aula teórica e prática, 100% presencial, para quem quer entrar na área com técnica de verdade, mesmo que esteja começando do zero. O que você vai aprender: aula teórica e prática, montagem de biquíni perfeita, fototipos de pele sem erro, radiação com segurança, produtos e fornecedores, banho de lua, gestão para lotar sua agenda. Bônus: 3 certificados inclusos, 100% presencial em Lavras, suporte vitalício depois do curso, vagas limitadas por turma.">
+      <article class="curso-card rev" aria-labelledby="t-curso">
+        <figure class="img-4x5">
+          <img src="assets/servico-curso-alunas.jpg" width="800" height="1000" loading="lazy" decoding="async"
+               alt="Diana Alice ao ar livre entre duas alunas que seguram seus certificados do curso de bronzeamento.">
+        </figure>
         <div class="curso-corpo">
+          <span class="curso-tag">Curso 3 em 1 · Do zero ao profissional</span>
+          <h3 id="t-curso">Curso de bronzeamento</h3>
+          <p>Aula teórica e prática, 100% presencial, para quem quer entrar na área com técnica de verdade — mesmo que esteja começando do zero.</p>
+
+          <h4>O que você vai aprender</h4>
+          <ul class="curso-itens">
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Aula teórica e prática</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Montagem de biquíni perfeita</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Fototipos de pele, sem erro</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Radiação com segurança</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Produtos e fornecedores</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Banho de lua</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Gestão para lotar sua agenda</li>
+          </ul>
+
+          <div class="curso-bonus">
+            <span class="sig">Bônus</span>
+            <span class="selo">Curso de Bronze a Jato</span>
+            <span class="selo">Banho de Lua Gourmet</span>
+          </div>
+
+          <ul class="curso-dif">
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-certificado"/></svg><b>3 certificados</b> inclusos</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-pin"/></svg><b>100% presencial</b> em Lavras</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-suporte"/></svg><b>Suporte vitalício</b> depois do curso</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-relogio"/></svg><b>Vagas limitadas</b> por turma</li>
+          </ul>
+
           <div class="curso-acoes">
             <a class="btn mel" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Quero%20saber%20das%20pr%C3%B3ximas%20turmas%20do%20curso%20de%20bronzeamento." target="_blank" rel="noopener" data-cta="curso">
               <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg>Quero saber das próximas turmas
@@ -1520,26 +1545,54 @@ footer{border-top:1px solid var(--linha-escura)}
       </article>
 
       <!-- Treinamento Online -->
-      <article class="curso-card capa rev d1" aria-label="Treinamento Online — Método Bronze Prime">
-        <img src="assets/capa-metodo-bronze-prime.png" width="1402" height="1122" loading="lazy" decoding="async"
-             alt="Santo Bronze apresenta: Método Bronze Prime, formação profissional em bronzeamento. Técnica comprovada, experiência real, resultados de verdade, transforme vidas.">
+      <article class="curso-card rev d1" aria-labelledby="t-online">
+        <figure class="img-4x5">
+          <img src="assets/diana-alice-retrato-piscina.jpg" width="1200" height="1600" loading="lazy" decoding="async"
+               alt="Diana Alice sorrindo, à beira da piscina.">
+        </figure>
         <div class="curso-corpo">
+          <span class="curso-tag">100% online · Em breve</span>
+          <h3 id="t-online">Treinamento Online</h3>
+          <p class="curso-frase">Toda a minha técnica compilada em um treinamento online, onde você pode estudar e aprender no seu ritmo, de qualquer lugar do Brasil.</p>
+
+          <h4>Para quem</h4>
+          <ul class="curso-itens">
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Não mora em Lavras ou não pode se deslocar</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Quer estudar no próprio ritmo, de onde estiver</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Quer começar com pouco investimento</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Quer acesso à técnica antes de vir pro presencial</li>
+          </ul>
+
           <div class="curso-acoes">
-            <a class="btn mel" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Quero%20garantir%20minha%20vaga%20no%20M%C3%A9todo%20Bronze%20Prime." target="_blank" rel="noopener" data-cta="treinamento-online">
-              <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg>Garantir minha vaga
+            <a class="btn sec claro" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Quero%20ser%20avisada%20quando%20o%20treinamento%20online%20for%20lan%C3%A7ado." target="_blank" rel="noopener" data-cta="treinamento-online">
+              <svg class="ic" aria-hidden="true" focusable="false"><use href="#i-chat"/></svg>Quero ser avisada do lançamento
             </a>
-            <p class="micro"><span class="dot" aria-hidden="true"></span>Abre o WhatsApp com a mensagem pronta · sem compromisso</p>
+            <p class="micro"><span class="dot" aria-hidden="true"></span>Em breve · sem compromisso</p>
           </div>
         </div>
       </article>
 
       <!-- Mentoria -->
-      <article class="curso-card capa rev d2" aria-label="Mentoria — Cresça com direção">
-        <img src="assets/capa-mentoria-cresca-com-direcao.png" width="1774" height="887" loading="lazy" decoding="async"
-             alt="Mentoria: cresça com direção. Mentoria não é pra todo mundo, é pra quem está comprometida com crescimento. Já entendeu que não é falta de talento, quer direção, estratégia e clareza, quer sair da estagnação, quer crescer de forma profissional.">
+      <article class="curso-card invertido rev d2" aria-labelledby="t-mentoria">
+        <figure class="img-4x5">
+          <img src="assets/servico-mentoria-diana.jpg" width="800" height="1000" loading="lazy" decoding="async" style="object-position:50% 20%"
+               alt="Retrato de Diana Alice, de cabelo ruivo e blazer branco, com a mão apoiada no queixo.">
+        </figure>
         <div class="curso-corpo">
+          <span class="curso-tag">Individual · Para quem já atua</span>
+          <h3 id="t-mentoria">Mentoria</h3>
+          <p class="curso-frase">Mentoria não é pra todo mundo. É pra quem está comprometida com crescimento.</p>
+
+          <h4>É pra você que</h4>
+          <ul class="curso-itens">
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Já entendeu que não é falta de talento</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Quer direção, estratégia e clareza</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Quer sair da estagnação</li>
+            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Quer crescer de forma profissional</li>
+          </ul>
+
           <div class="curso-acoes">
-            <a class="btn sec claro" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Quero%20crescer%20com%20a%20mentoria." target="_blank" rel="noopener" data-cta="mentoria">Quero crescer</a>
+            <a class="btn sec claro" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Quero%20saber%20sobre%20a%20mentoria." target="_blank" rel="noopener" data-cta="mentoria">Quero saber da mentoria</a>
             <p class="micro"><span class="dot" aria-hidden="true"></span>Abre o WhatsApp com a mensagem pronta · sem compromisso</p>
           </div>
         </div>
