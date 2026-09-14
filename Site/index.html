@@ -305,6 +305,21 @@ section.bloco.fundo-escuro{position:relative;overflow:hidden}
 .card-serv ul{list-style:none;font-size:15px;color:var(--texto-2);display:grid;gap:8px}
 .card-serv ul li{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:start}
 .card-serv ul svg{width:14px;height:14px;color:var(--caramelo);margin-top:5px}
+
+/* Carrossel antes/depois dentro do card de serviço */
+.card-serv .carrossel{position:relative;overflow:hidden}
+.card-serv .carrossel-trilha{display:flex;list-style:none;margin:0;padding:0;height:100%;transition:transform .45s var(--ease-suave,ease)}
+.card-serv .carrossel-trilha li.carrossel-slide{position:relative;flex:0 0 100%;min-width:100%;height:100%}
+.carrossel-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.carrossel-tag{position:absolute;left:12px;bottom:12px;z-index:1;background:rgba(42,22,11,.72);color:#FBF3E4;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+.carrossel-seta{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:0;background:rgba(42,22,11,.55);color:#FBF3E4;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background .2s ease;z-index:2}
+.carrossel-seta:hover{background:rgba(42,22,11,.8)}
+.carrossel-seta svg{width:18px;height:18px}
+.carrossel-seta.prev{left:10px}
+.carrossel-seta.next{right:10px}
+.carrossel-dots{position:absolute;left:0;right:0;bottom:12px;display:flex;justify-content:center;gap:8px;z-index:2}
+.carrossel-dots button{width:7px;height:7px;padding:0;border-radius:50%;border:0;background:rgba(251,243,228,.55);cursor:pointer}
+.carrossel-dots button.on{background:#FBF3E4}
 .cta-dupla{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:var(--space-5)}
 .selos{display:flex;flex-wrap:wrap;gap:12px;margin-top:var(--space-4);align-items:center}
 .selo{background:var(--mel);color:var(--espresso);padding:8px 14px;border-radius:var(--radius-xs);font-weight:500;font-size:15px}
@@ -926,10 +941,8 @@ footer{border-top:1px solid var(--linha-escura)}
   <div class="wrap">
     <div class="sec-head rev">
       <div>
-        <span class="sig">O que fazemos</span>
         <h2 class="h1" id="t-servicos">Serviços</h2>
       </div>
-      <p class="lead muted">Não sabe qual escolher? A gente avalia sua pele e indica o melhor caminho para o resultado que você quer.</p>
     </div>
 
     <div class="cards-serv">
@@ -940,7 +953,7 @@ footer{border-top:1px solid var(--linha-escura)}
         </figure>
         <div class="corpo">
           <h3 class="h3">Bronzeamento natural e artificial</h3>
-          <p class="small muted">O biquíni de fita vem para sensualizar o corpo, com design e simetria certos, ele valoriza cada curva da mulher brasileira.</p>
+          <p class="small muted">Ir pro bronze vai muito além da marquinha: além de ser uma fonte de vitamina D, o bronzeamento libera serotonina (hormônio do humor), camufla estrias e celulite, deixa a pele uniforme, aumenta sua autoestima e vários outros benefícios.</p>
           <div class="preco"><b>Valores e horários pelo WhatsApp</b><span>Com hora marcada</span></div>
           <a class="link-ed" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Quero%20agendar%20um%20bronzeamento." target="_blank" rel="noopener" data-cta="servico-bronze">Quero agendar meu bronze</a>
         </div>
@@ -964,10 +977,30 @@ footer{border-top:1px solid var(--linha-escura)}
       </article>
 
       <article class="card-serv rev d2">
-        <figure class="img-4x5">
-          <img src="assets/servico-clareamento-estrias.jpg" width="800" height="1000" loading="lazy" decoding="async"
-               alt="Abdômen com estrias antes do tratamento de clareamento de estrias e cicatrizes.">
-        </figure>
+        <div class="carrossel img-4x5" data-carrossel>
+          <ul class="carrossel-trilha">
+            <li class="carrossel-slide">
+              <img src="assets/servico-clareamento-antes.jpg" width="738" height="1280" loading="lazy" decoding="async"
+                   alt="Abdômen com estrias escuras antes do tratamento de clareamento de estrias e cicatrizes.">
+              <span class="carrossel-tag">Antes</span>
+            </li>
+            <li class="carrossel-slide">
+              <img src="assets/servico-clareamento-depois.jpg" width="900" height="1600" loading="lazy" decoding="async"
+                   alt="Abdômen com estrias já clareadas, depois do tratamento de clareamento de estrias e cicatrizes.">
+              <span class="carrossel-tag">Depois</span>
+            </li>
+          </ul>
+          <button type="button" class="carrossel-seta prev" aria-label="Foto anterior">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button type="button" class="carrossel-seta next" aria-label="Próxima foto">
+            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="carrossel-dots" role="tablist" aria-label="Selecionar foto de antes ou depois">
+            <button type="button" class="on" role="tab" aria-selected="true" aria-label="Ver foto de antes"></button>
+            <button type="button" role="tab" aria-selected="false" aria-label="Ver foto de depois"></button>
+          </div>
+        </div>
         <div class="corpo">
           <h3 class="h3">Clareamento de estrias e cicatrizes</h3>
           <p>Conheça nosso método revolucionário, zero dor.</p>
@@ -1038,21 +1071,11 @@ footer{border-top:1px solid var(--linha-escura)}
         <span class="sig">Resultados reais</span>
         <h2 class="h1" id="t-resultados-reais">Como fica<br><em class="it">na pele</em></h2>
       </div>
-      <p class="lead muted">Cada pele reage de uma maneira, de acordo com a liberação da melanina — responsável pela produção da nossa cor. Estas são clientes do Santo Bronze.</p>
+      <p class="lead muted">Cada pele reage de uma maneira, de acordo com a liberação da melanina — responsável pela produção da nossa cor. Por isso não se deve comparar o seu bronze com o de outra pessoa.</p>
     </div>
 
     <!-- Galeria: resultados de clientes do Santo Bronze (Site/Resultados Reais) -->
     <ul class="galeria rev">
-      <li><figure>
-        <div class="img-4x5"><img src="assets/resultado-real-1.jpg" width="700" height="875" loading="lazy" decoding="async"
-             alt="Costas e quadril de uma cliente com bronze uniforme e a marquinha fina do biquíni de fita rosa."></div>
-        <figcaption>Marquinha fina e cor por igual</figcaption>
-      </figure></li>
-      <li><figure>
-        <div class="img-4x5"><img src="assets/resultado-real-2.jpg" width="700" height="875" loading="lazy" decoding="async"
-             alt="Cliente sorrindo, de cabelo escuro, com biquíni de fita preta e marquinhas bem desenhadas no corpo bronzeado."></div>
-        <figcaption>Biquíni de fita, marquinha desenhada</figcaption>
-      </figure></li>
       <li><figure>
         <div class="img-4x5"><img src="assets/resultado-real-3.jpg" width="700" height="875" loading="lazy" decoding="async"
              alt="Barriga bronzeada de uma cliente de calça escura e blusa amarrada, com as linhas claras da marquinha no quadril."></div>
@@ -1064,14 +1087,24 @@ footer{border-top:1px solid var(--linha-escura)}
         <figcaption>Bronze uniforme, das costas ao quadril</figcaption>
       </figure></li>
       <li><figure>
-        <div class="img-4x5"><img src="assets/resultado-real-5.jpg" width="700" height="875" loading="lazy" decoding="async"
-             alt="Colo bronzeado e molhado, com gotas de água, biquíni de fita laranja e a linha clara da alça."></div>
-        <figcaption>Dourado que brilha com a água</figcaption>
+        <div class="img-4x5"><img src="assets/resultado-real-7.jpg" width="700" height="875" loading="lazy" decoding="async"
+             alt="Costas de uma cliente com bronze uniforme e a marquinha do biquíni de fita, no photo wall da Santo Bronze."></div>
+        <figcaption>Marquinha e boa cor no photo wall</figcaption>
       </figure></li>
       <li><figure>
-        <div class="img-4x5"><img src="assets/resultado-real-6.jpg" width="700" height="875" loading="lazy" decoding="async"
-             alt="Colo bronzeado de uma cliente com biquíni de fita branca e preta e a marquinha das alças bem marcada."></div>
-        <figcaption>Marquinha de fita no colo</figcaption>
+        <div class="img-4x5"><img src="assets/resultado-real-8.jpg" width="700" height="875" loading="lazy" decoding="async"
+             alt="Quadril e costas de uma cliente com bronze dourado e a marquinha bem desenhada do biquíni de fio."></div>
+        <figcaption>Marquinha desenhada no biquíni de fio</figcaption>
+      </figure></li>
+      <li><figure>
+        <div class="img-4x5"><img src="assets/resultado-real-9.jpg" width="700" height="875" loading="lazy" decoding="async"
+             alt="Quadril bronzeado de uma cliente segurando o ativador iluminador Ouro 24K, com a marquinha bem marcada."></div>
+        <figcaption>Cor dourada com o Ativador Ouro 24K</figcaption>
+      </figure></li>
+      <li><figure>
+        <div class="img-4x5"><img src="assets/resultado-real-10.jpg" width="700" height="875" loading="lazy" decoding="async"
+             alt="Cliente bronzeada deitada na espreguiçadeira, de biquíni e chapéu de palha, com a pele dourada por igual."></div>
+        <figcaption>Bronze uniforme até debaixo do chapéu</figcaption>
       </figure></li>
     </ul>
 
@@ -1138,7 +1171,7 @@ footer{border-top:1px solid var(--linha-escura)}
           <p>Costuma ter sardas, cabelo ruivo ou loiro e olhos claros.</p>
           <dl>
             <div><svg aria-hidden="true" focusable="false"><use href="#i-sun"/></svg><dt>Com o sol</dt><dd>Sempre queima e quase não bronzeia.</dd></div>
-            <div><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg><dt>No bronze</dt><dd>Pede cautela máxima com o sol. Para esta pele, o bronze artificial, a jato, costuma ser o caminho mais seguro.</dd></div>
+            <div><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg><dt>No bronze</dt><dd>Pede cautela máxima com o sol. Para esta pele, o bronze artificial, a jato, costuma ser o caminho mais seguro. Recomendamos pelo menos 3 sessões para um resultado duradouro e uma pele uniforme e dourada.</dd></div>
           </dl>
         </div>
         <p class="tons-aviso">A escala é um ponto de partida, não um diagnóstico. O seu fototipo e o tipo de bronze mais seguro para você são definidos na avaliação, antes de qualquer sessão.</p>
@@ -1324,6 +1357,13 @@ footer{border-top:1px solid var(--linha-escura)}
         </div>
       </details>
       <details>
+        <summary>O que é o bronzeamento a jato?</summary>
+        <div class="resposta">
+          <p>É uma maquiagem corporal, com durabilidade de 7 a 10 dias. Não tem contraindicação e pode ser feito até na gravidez.</p>
+          <p>Diferente do que muita gente pensa, no bronze a jato não existe escolha de cor. Nenhum bronze tem: o tom final depende da liberação da melanina de cada pele, não de uma cor escolhida pela cliente.</p>
+        </div>
+      </details>
+      <details>
         <summary>Bronzeamento x depilação: quanto tempo esperar?</summary>
         <div class="resposta">
           <p>Depende do método usado. Gilete: 1 dia. Cera: 2 dias. Laser (Soprano Ice Platinum): 1 dia. Demais lasers: 20 dias.</p>
@@ -1496,7 +1536,7 @@ footer{border-top:1px solid var(--linha-escura)}
         <span class="sig">Para profissionais</span>
         <h2 class="h1" id="t-cursos">Conquiste sua<br>independência <span class="script">financeira</span></h2>
       </div>
-      <p class="lead">Formação presencial comigo, referência em bronzeamento natural e artificial e 3 anos consecutivos em 1º lugar no Sales Pesquisa. Para quem está começando do zero e para quem já atua e quer crescer.</p>
+      <p class="lead">Formação presencial com mão na massa, referência em bronzeamento natural e artificial e 3 anos consecutivos em 1º lugar no Sales Pesquisa. Para quem está começando do zero e para quem já atua e quer crescer.</p>
     </div>
 
     <div class="cursos-lista">
@@ -1611,8 +1651,7 @@ footer{border-top:1px solid var(--linha-escura)}
         <div class="marca-rod">
           <img src="assets/logo-santo-bronze-novo.png" width="139" height="88" loading="lazy" decoding="async" alt="Logo do Santo Bronze: um sol dourado com o perfil de uma mulher e o nome Santo Bronze, Spa & Bronzeamento.">
         </div>
-        <p>Especialista em bronzeamento natural e a jato em Lavras, Minas Gerais. Cursos e mentoria para profissionais.</p>
-        <p style="margin-top:10px">Se identifica como uma empresa de empreendedoras.</p>
+        <p>Especialista em bronzeamento natural e artificial em Lavras, sendo referência na região.</p>
       </div>
 
       <div>
@@ -1721,8 +1760,8 @@ footer{border-top:1px solid var(--linha-escura)}
   /* ---------- Gráfico: escala de fototipos (Fitzpatrick) ----------
      [nome, perfil, com o sol, no bronze] — textos revisar com a Diana */
   var FOTOTIPOS = [
-    ['Fototipo I · Pele muito clara', 'Costuma ter sardas, cabelo ruivo ou loiro e olhos claros.', 'Sempre queima e quase não bronzeia.', 'Pede cautela máxima com o sol. Para esta pele, o bronze artificial, a jato, costuma ser o caminho mais seguro.'],
-    ['Fototipo II · Pele clara', 'Pele sensível, com pouca melanina natural.', 'Queima com facilidade e bronzeia pouco.', 'Exposição curta e gradual, com hidratação reforçada. O jato ajuda a chegar no tom sem forçar a pele.'],
+    ['Fototipo I · Pele muito clara', 'Costuma ter sardas, cabelo ruivo ou loiro e olhos claros.', 'Sempre queima e quase não bronzeia.', 'Pede cautela máxima com o sol. Para esta pele, o bronze artificial, a jato, costuma ser o caminho mais seguro. Recomendamos pelo menos 3 sessões para um resultado duradouro e uma pele uniforme e dourada.'],
+    ['Fototipo II · Pele clara', 'Pele sensível, com pouca melanina natural.', 'Queima com facilidade e bronzeia pouco.', 'Exposição curta e gradual, com hidratação reforçada. Recomendamos pelo menos 3 sessões para um resultado duradouro e uma pele uniforme e dourada.'],
     ['Fototipo III · Pele morena', 'Tom dourado, que escurece com facilidade.', 'Queima pouco e bronzeia com facilidade.', 'Pega cor rápido. O cuidado é não exagerar: excesso de sol mancha e “cansa” os melanócitos.'],
     ['Fototipo IV · Pele morena escura', 'Pele com bastante melanina natural.', 'Raramente queima e bronzeia bastante.', 'O foco é realce e uniformidade: hidratação e marquinha bem desenhada fazem toda a diferença.'],
     ['Fototipo V · Pele negra', 'Pele profundamente pigmentada.', 'Dificilmente queima.', 'O bronze aparece como brilho e marquinha. Hidratação e proteção continuam essenciais.']
@@ -1825,6 +1864,40 @@ footer{border-top:1px solid var(--linha-escura)}
     d.addEventListener('toggle', function(){
       if(!d.open) return;
       Array.prototype.forEach.call(faqs, function(o){ if(o !== d) o.open = false; });
+    });
+  });
+
+  /* ---------- Carrossel antes/depois ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-carrossel]'), function(car){
+    var trilha = car.querySelector('.carrossel-trilha'),
+        slides = car.querySelectorAll('.carrossel-slide'),
+        dots = car.querySelectorAll('.carrossel-dots button'),
+        prev = car.querySelector('.carrossel-seta.prev'),
+        next = car.querySelector('.carrossel-seta.next'),
+        indice = 0;
+
+    function irPara(i){
+      indice = (i + slides.length) % slides.length;
+      trilha.style.transform = 'translateX(-' + (indice * 100) + '%)';
+      Array.prototype.forEach.call(dots, function(d, di){
+        d.classList.toggle('on', di === indice);
+        d.setAttribute('aria-selected', di === indice ? 'true' : 'false');
+      });
+    }
+
+    if(prev) prev.addEventListener('click', function(){ irPara(indice - 1); });
+    if(next) next.addEventListener('click', function(){ irPara(indice + 1); });
+    Array.prototype.forEach.call(dots, function(d, di){
+      d.addEventListener('click', function(){ irPara(di); });
+    });
+
+    var tocouX = null;
+    car.addEventListener('touchstart', function(ev){ tocouX = ev.touches[0].clientX; }, { passive: true });
+    car.addEventListener('touchend', function(ev){
+      if(tocouX === null) return;
+      var diff = ev.changedTouches[0].clientX - tocouX;
+      if(Math.abs(diff) > 40) irPara(indice + (diff < 0 ? 1 : -1));
+      tocouX = null;
     });
   });
 
