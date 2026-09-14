@@ -461,8 +461,6 @@ section.bloco.cursos{background:var(--espresso);color:var(--champanhe);position:
 .faq .resposta{padding:0 44px 24px 0;font-size:16px;color:var(--texto-2);animation:abrir .3s ease}
 .faq .resposta p+p{margin-top:12px}
 @keyframes abrir{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-.faixa-melasma{font-family:var(--font-display);font-size:clamp(22px,2.6vw,28px);line-height:1.3;margin-bottom:var(--space-5)}
-.faixa-melasma mark{background:var(--mel);color:var(--espresso);padding:2px 12px;font-family:var(--font-body);font-weight:400;font-size:clamp(20px,2.4vw,26px);letter-spacing:.01em}
 
 /* ---------- Contato / formulário ---------- */
 .form-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:start}
@@ -624,7 +622,7 @@ section.bloco{padding:var(--secao) 0;border-bottom:0}
 .hero .lead{margin-top:64px;max-width:30em;font-size:clamp(17px,1.5vw,19px)}
 .hero-actions{margin-top:36px;gap:14px}
 /* Assinatura vira legenda de campanha: acompanha a imagem sem disputar com o título */
-.hero-assinatura{font-size:inherit;line-height:1.3;text-shadow:0 1px 18px rgba(42,22,11,.6);max-width:230px;padding-top:18px;border-top:1px solid rgba(255,243,226,.4)}
+.hero-assinatura{font-size:inherit;line-height:1.3;text-shadow:0 1px 18px rgba(42,22,11,.6);max-width:230px;padding-top:18px;border-top:1px solid rgba(255,243,226,.4);margin-bottom:100px}
 .hero-assinatura em{display:block;font-family:var(--font-display);font-style:italic;font-weight:400;font-size:30px;line-height:1;letter-spacing:-.01em;color:#FFF3E2}
 .hero-assinatura small{margin-top:10px;font-size:14px;font-weight:400;color:#F6E6CC;max-width:none}
 /* sombra localizada atrás da legenda: garante contraste AA sobre o brilho da pele, sem escurecer o resto do vídeo */
@@ -762,8 +760,6 @@ section.bloco{padding:var(--secao) 0;border-bottom:0}
 .faq details[open] summary::after{transform:none;margin:0}
 .faq details[open] summary::before{transform:rotate(0);opacity:0}
 .faq .resposta{padding:0 64px 30px 0;line-height:1.75;max-width:64ch}
-/* destaque de marca-texto discreto em vez de etiqueta cheia */
-.faixa-melasma mark{background:linear-gradient(transparent 60%,rgba(212,162,92,.42) 60%);padding:0 4px;color:var(--espresso);font-family:var(--font-display);font-size:inherit;letter-spacing:0}
 @media (max-width:520px){.faq summary{padding-right:48px}.faq .resposta{padding-right:0}}
 
 /* ---------- Formulário ---------- */
@@ -938,6 +934,7 @@ footer{border-top:1px solid var(--linha-escura)}
         <span class="sig">O que fazemos</span>
         <h2 class="h1" id="t-servicos">Serviços</h2>
       </div>
+      <p class="lead muted">Não sabe qual escolher? A gente avalia sua pele e indica o melhor caminho para o resultado que você quer.</p>
     </div>
 
     <div class="cards-serv">
@@ -1112,15 +1109,15 @@ footer{border-top:1px solid var(--linha-escura)}
           <div>
             <h3>O que ajuda o bronze</h3>
             <ul>
-              <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><strong>Alimentação:</strong> alimentos ricos em betacaroteno, como cenoura, mamão e abóbora, ajudam a pele a pigmentar melhor.</span></li>
-              <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><strong>Hidratação por dentro e por fora:</strong> pele seca e desidratada não fixa o bronze, por isso é de extrema importância usar hidratante de qualidade todos os dias e tomar bastante água.</span></li>
+              <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><strong>Alimentação:</strong> alimentos ricos em betacaroteno, como cenoura, mamão e abóbora, podem ajudar a pele a pigmentar melhor.</span></li>
+              <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg><span><strong>Hidratação por dentro e por fora:</strong> pele seca e desidratada dificulta a fixação do bronze, por isso é importante usar hidratante de qualidade todos os dias e tomar bastante água.</span></li>
             </ul>
           </div>
           <div class="atrapalha">
             <h3>O que atrapalha</h3>
             <ul>
               <li><svg aria-hidden="true" focusable="false"><use href="#i-x"/></svg><span><strong>Certos medicamentos</strong> podem causar manchas.</span></li>
-              <li><svg aria-hidden="true" focusable="false"><use href="#i-x"/></svg><span><strong>Cigarro</strong> deixa o bronze opaco; <strong>álcool</strong> desidrata e dificulta a pigmentação.</span></li>
+              <li><svg aria-hidden="true" focusable="false"><use href="#i-x"/></svg><span><strong>Cigarro</strong> pode deixar o bronze opaco; <strong>álcool</strong> desidrata e pode dificultar a pigmentação.</span></li>
               <li><svg aria-hidden="true" focusable="false"><use href="#i-x"/></svg><span><strong>Excesso de sol:</strong> com a pele já muito pigmentada, os melanócitos “cansam” e o bronze pega com mais dificuldade.</span></li>
             </ul>
           </div>
@@ -1348,7 +1345,7 @@ footer{border-top:1px solid var(--linha-escura)}
       <details>
         <summary>Estou grávida, posso fazer?</summary>
         <div class="resposta">
-          <p>No período de gestação você pode estar fazendo o bronzeamento a jato, que tem uma durabilidade de 10 dias.</p>
+          <p>No período de gestação, o bronzeamento a jato costuma ser a opção mais indicada, com durabilidade de cerca de 10 dias. Como é uma fase que pede cuidado individual, vale confirmar com o seu obstetra antes de agendar.</p>
         </div>
       </details>
       <details>
@@ -1809,8 +1806,8 @@ footer{border-top:1px solid var(--linha-escura)}
       return;
     }
 
-    /* curso e mentoria não são "agendar um bronze": a mensagem muda para não chegar truncada */
-    var profissional = /curso|mentoria/.test(oc);
+    /* curso, treinamento online e mentoria não são "agendar um bronze": a mensagem muda para não chegar truncada */
+    var profissional = /curso|treinamento|mentoria/.test(oc);
     var msg = profissional
       ? 'Olá! Sou a ' + nome + ' e quero saber sobre ' + oc + '.'
       : 'Olá! Sou a ' + nome + ' e quero agendar um bronze para ' + oc + '.';
