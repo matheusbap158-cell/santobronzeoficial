@@ -185,7 +185,7 @@ p+p{margin-top:var(--space-3)}
 /* Faixa de prova no hero */
 .faixa-prova{border-top:1px solid rgba(232,207,166,.22);position:relative;z-index:1}
 .hero .faixa-prova .wrap{display:block;padding:0}
-.faixa-prova ul{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(232,207,166,.22)}
+.faixa-prova ul{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(232,207,166,.22)}
 .faixa-prova li{background:var(--espresso);padding:22px 20px;display:flex;flex-direction:column;gap:4px}
 .faixa-prova b{font-family:var(--font-body);font-weight:600;font-size:clamp(26px,3vw,34px);line-height:1;color:var(--mel);display:flex;align-items:center;gap:8px}
 .faixa-prova b svg{width:22px;height:22px;color:var(--mel)}
@@ -359,11 +359,10 @@ section.bloco.fundo-escuro{position:relative;overflow:hidden}
 .grafico h3{font-family:var(--font-body);font-weight:600;font-size:15px;color:#FFF3E2}
 .grafico p.small{color:var(--champanhe);margin-top:4px}
 .grafico ul{list-style:none;margin-top:16px;display:grid;gap:12px}
-.grafico li{display:grid;grid-template-columns:110px 1fr 26px;gap:10px;align-items:center;font-size:14px;color:var(--champanhe)}
+.grafico li{display:grid;grid-template-columns:110px 1fr;gap:10px;align-items:center;font-size:14px;color:var(--champanhe)}
 .grafico .trilho{display:block;height:10px;background:rgba(232,207,166,.18)}
 .grafico .barra{display:block;height:100%;background:var(--mel);width:0;transition:width 1.1s cubic-bezier(.22,.75,.3,1)}
-.grafico .qtd{text-align:right;font-family:var(--font-display);font-size:18px;color:var(--mel)}
-@media (max-width:520px){.grafico li{grid-template-columns:92px 1fr 24px}}
+@media (max-width:520px){.grafico li{grid-template-columns:92px 1fr}}
 
 .deps{display:grid;gap:24px}
 .dep{background:var(--creme);border:1px solid var(--linha);padding:28px}
@@ -391,6 +390,8 @@ section.alt .mini-frases p{background:var(--creme)}
 .premio-titulo{font-family:var(--font-body);font-weight:500;font-size:clamp(21px,2.4vw,26px);line-height:1.4;color:var(--espresso);margin-top:14px}
 .premio-titulo b{font-weight:700;color:var(--caramelo)}
 .premio-txt .lead{margin-top:18px}
+.premio-citacao{font-family:var(--font-display);font-style:italic;font-size:clamp(20px,2.2vw,24px);line-height:1.4;color:var(--cacau);margin-top:18px}
+.premio-citacao cite{display:block;margin-top:12px;font-family:var(--font-body);font-style:normal;font-weight:600;font-size:15px;color:var(--espresso)}
 @media (max-width:600px){.premio-fotos{gap:12px}.premio-fotos .retrato,.premio-fotos .img-4x5{aspect-ratio:3/4}.premio-fotos .img-4x5{margin-top:10%}}
 .numeros{display:grid;grid-template-columns:repeat(2,1fr);gap:0 32px;margin-top:40px}
 .numeros div{padding:20px 0;border-top:1px solid rgba(90,45,20,.2)}
@@ -919,9 +920,7 @@ footer{border-top:1px solid var(--linha-escura)}
     <div class="wrap">
       <ul>
         <li><b><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg><span data-conta="4,9">4,9</span></b><span>Nota no Google</span></li>
-        <li><b><span data-conta="79">79</span></b><span>Avaliações de clientes</span></li>
         <li><b>+ <span data-conta="5000">5.000</span></b><span>Mulheres atendidas</span></li>
-        <li><b>1º lugar</b><span>Sales Pesquisa, categoria Bronzeamento, por 3 anos consecutivos</span></li>
       </ul>
     </div>
   </div>
@@ -1044,7 +1043,7 @@ footer{border-top:1px solid var(--linha-escura)}
         <span class="sig">Onde tudo acontece</span>
         <h2 class="h1" id="t-espaco">Nosso <em class="it">espaço</em></h2>
       </div>
-      <p class="lead muted">Aqui você encontra um ambiente aconchegante, amplo, seguro e privado. Atendimento humanizado e monitorado, sem aglomeração, ducha aquecida, internet, música ambiente, vista privilegiada em meio a natureza, estacionamento fácil e aquele capuchinho delicioso que é o chefe da casa. Permita-se viver o seu momento.</p>
+      <p class="lead muted">Aqui você encontra um ambiente aconchegante, amplo, seguro e privado. Atendimento humanizado e monitorado, sem aglomeração, ducha aquecida, internet, música ambiente, vista privilegiada em meio a natureza, estacionamento fácil e aquele Capuccino delicioso que é o chefe da casa. Permita-se viver o seu momento.</p>
     </div>
 
     <ul class="galeria rev">
@@ -1062,6 +1061,11 @@ footer{border-top:1px solid var(--linha-escura)}
         <div class="img-4x5"><img src="assets/espaco-copo-santo-bronze.jpg" width="1200" height="1600" loading="lazy" decoding="async"
              alt="Copo personalizado do Santo Bronze com bebida, sobre mesa de fibra natural, ao ar livre."></div>
         <figcaption>Um momento só seu</figcaption>
+      </figure></li>
+      <li><figure>
+        <div class="img-4x5"><img src="assets/espaco-cappuccino.jpg" width="900" height="1600" loading="lazy" decoding="async"
+             alt="Cappuccino com calda de caramelo servido em taça, ao lado de um docinho, em bandeja de madeira com a marca Santo Bronze."></div>
+        <figcaption>Aquele Capuccino delicioso</figcaption>
       </figure></li>
     </ul>
   </div>
@@ -1187,7 +1191,7 @@ footer{border-top:1px solid var(--linha-escura)}
         <span class="sig">Avaliações</span>
         <h2 class="h1" id="t-resultados">O que elas<br><em class="it">dizem</em></h2>
       </div>
-      <p class="lead muted">Nota 4,9 em 79 avaliações públicas no Google. A palavra que as clientes mais usam para falar do Santo Bronze é “resultado” — logo depois vêm “autoestima” e “ambiente”.</p>
+      <p class="lead muted">Nota 4,9 no Google. A palavra que as clientes mais usam para falar do Santo Bronze é “resultado” — logo depois vêm “atendimento”, “autoestima” e “ambiente”.</p>
     </div>
 
     <div class="prova-grid">
@@ -1200,7 +1204,7 @@ footer{border-top:1px solid var(--linha-escura)}
             <circle id="arcoNota" cx="60" cy="60" r="50" fill="none" stroke="#D4A25C" stroke-width="10"
                     stroke-linecap="round" transform="rotate(-90 60 60)"
                     stroke-dasharray="314" stroke-dashoffset="314"/>
-            <text x="60" y="58" text-anchor="middle" font-family="Bodoni Moda, Georgia, serif" font-size="34" fill="#FFF3E2">4,9</text>
+            <text x="60" y="60" text-anchor="middle" font-family="Bodoni Moda, Georgia, serif" font-weight="700" font-size="42" fill="#FFF3E2">4,9</text>
             <text x="60" y="78" text-anchor="middle" font-family="Jost, system-ui, sans-serif" font-size="11" fill="#E8CFA6" letter-spacing="1">DE 5,0</text>
           </svg>
           <div>
@@ -1214,10 +1218,10 @@ footer{border-top:1px solid var(--linha-escura)}
           <h3>As palavras que mais se repetem</h3>
           <p class="small">Termos mais citados nas avaliações públicas do Google.</p>
           <ul id="palavras">
-            <li><span>“resultado”</span><span class="trilho"><span class="barra" data-larg="100" style="--l:100%"></span></span><span class="qtd">6</span></li>
-            <li><span>“autoestima”</span><span class="trilho"><span class="barra" data-larg="67" style="--l:67%"></span></span><span class="qtd">4</span></li>
-            <li><span>“ambiente”</span><span class="trilho"><span class="barra" data-larg="67" style="--l:67%"></span></span><span class="qtd">4</span></li>
-            <li><span>“atendimento”</span><span class="trilho"><span class="barra" data-larg="33" style="--l:33%"></span></span><span class="qtd">2</span></li>
+            <li><span>“resultado”</span><span class="trilho"><span class="barra" data-larg="100" style="--l:100%"></span></span></li>
+            <li><span>“atendimento”</span><span class="trilho"><span class="barra" data-larg="80" style="--l:80%"></span></span></li>
+            <li><span>“autoestima”</span><span class="trilho"><span class="barra" data-larg="67" style="--l:67%"></span></span></li>
+            <li><span>“ambiente”</span><span class="trilho"><span class="barra" data-larg="55" style="--l:55%"></span></span></li>
           </ul>
         </div>
       </div>
@@ -1275,7 +1279,7 @@ footer{border-top:1px solid var(--linha-escura)}
     <div class="premio-txt rev d1">
       <span class="sig">Melhores do ano · Lavras MG</span>
       <h2 class="premio-titulo" id="t-quem"><b>3 anos</b> consecutivos em <b>1º lugar</b> no Sales Pesquisa, categoria Bronzeamento</h2>
-      <p class="lead muted">O trabalho consistente que você faz hoje constrói os resultados extraordinários que você colherá amanhã.</p>
+      <blockquote class="premio-citacao">“O trabalho consistente que você faz hoje constrói os resultados extraordinários que você colherá amanhã.”<cite>Diana Alice</cite></blockquote>
 
       <div class="numeros">
         <div><b>+ 5.000</b><span>Mulheres atendidas</span></div>
@@ -1563,21 +1567,13 @@ footer{border-top:1px solid var(--linha-escura)}
       <!-- Treinamento Online -->
       <article class="curso-card rev d1" aria-labelledby="t-online">
         <figure class="img-4x5">
-          <img src="assets/diana-alice-retrato-piscina.jpg" width="1200" height="1600" loading="lazy" decoding="async"
-               alt="Diana Alice sorrindo, à beira da piscina.">
+          <img src="assets/treinamento-certificados.jpg" width="1200" height="1600" loading="lazy" decoding="async"
+               alt="Diana Alice ao lado de duas alunas formadas, cada uma segurando o certificado presencial do Santo Bronze.">
         </figure>
         <div class="curso-corpo">
           <span class="curso-tag">100% online · Em breve</span>
           <h3 id="t-online">Treinamento Online</h3>
-          <p class="curso-frase">Toda a minha técnica compilada em um treinamento online, onde você pode estudar e aprender no seu ritmo, de qualquer lugar do Brasil.</p>
-
-          <h4>Para quem</h4>
-          <ul class="curso-itens">
-            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Não mora em Lavras ou não pode se deslocar</li>
-            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Quer estudar no próprio ritmo, de onde estiver</li>
-            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Quer começar com pouco investimento</li>
-            <li><svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Quer acesso à técnica antes de vir pro presencial</li>
-          </ul>
+          <p class="curso-frase">Toda a técnica compilada em um treinamento online, onde você pode estudar e aprender no seu ritmo, de qualquer lugar do Brasil.</p>
 
           <div class="curso-acoes">
             <a class="btn sec claro" href="https://wa.me/5535992030072?text=Ol%C3%A1!%20Quero%20ser%20avisada%20quando%20o%20treinamento%20online%20for%20lan%C3%A7ado." target="_blank" rel="noopener" data-cta="treinamento-online">
